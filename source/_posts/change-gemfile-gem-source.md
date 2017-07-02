@@ -3,7 +3,7 @@ layout: post
 title: "修改Gemfile源"
 date: 2016-07-16 08:02:59 +0800
 comments: true
-categories: rails
+categories: Rails
 ---
 ## 改rails源代码里的source
 

@@ -11,6 +11,11 @@ tags: BIF
 ## BIF
 一些常见的没什么好说的,比较有意思的和有特色的记录了下用法
 
+- isinstance(obj, class_or_tuple) (note: Py2是class-or-type-or-tuple)
+
+    这个内置函数有意思就有意思在，参数类型可选tuple，然后你能在tuple里放
+    一堆的类型，参数验证时非常好用
+
 - bytearray([x[)
     ```
     In: bytearray(3)
@@ -41,6 +46,8 @@ tags: BIF
  由于py2中是`s.next()`,py3中是`s.__next__()`
  所以为了可移植性考虑写代码的时候应该用next()
 
- 
-  
+- reduce
+  reduce在Python3中不再是BIF了，其在Python3中位于functools模块里
 
+- callable(obj)
+  callable能够判断对象是否能调用

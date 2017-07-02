@@ -43,5 +43,8 @@ Django在没有明确定义的时候会为每个模型定义一个自增量整�
 
     p.delete() 直接再该对象上调用方法
 
+### 同步模型的改动到迁移中
 
+    python manage.py check
+    python manage.py makemigrations books
 

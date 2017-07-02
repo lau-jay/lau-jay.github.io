@@ -3,7 +3,7 @@ layout: post
 title: "rails basic"
 date: 2016-07-16 08:24:24 +0800
 comments: true
-categories: rails
+categories: Rails
 ---
 ## 生成app
 

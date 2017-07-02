@@ -49,3 +49,10 @@ categories: elixir
 - tuple
     * method: elem
 
+
+## elixir-vim plug
+add a line to .vimrc:
+
+    `Plug 'elixir-lang/vim-elixir'`
+last run in vim:
+  `:PlugInstall`

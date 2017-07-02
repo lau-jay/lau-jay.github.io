@@ -2,7 +2,7 @@
 title: Python3 bytes/str
 date: 2016-11-27 15:52:34
 categories: python
-tags: bytes str
+tags: code
 ---
 最近看到篇讲解Python3的str和bytes区别的好[文章](http://eli.thegreenplace.net/2012/01/30/the-bytesstr-dichotomy-in-python-3)
 Python3文本总是Unicode,用str表示，二进制数据由bytes类型表示。
