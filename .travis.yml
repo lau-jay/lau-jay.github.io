@@ -13,7 +13,7 @@ before_install:
 - eval $(ssh-agent)
 - ssh-add ~/.ssh/id_rsa
 - cp .travis/ssh_config  ~/.ssh/config
-- git config --global user.name "pyclearl"
+- git config --global user.name "pyclear"
 - git config --global user.email cappyclear@gmail.com
 install:
 - npm install
