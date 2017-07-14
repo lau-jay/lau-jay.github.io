@@ -20,12 +20,11 @@ Python的pip也具备类似的功能(不过感觉没npm以及Bundler好用)。
 
     pip install -r requirements.txt
 
-<!--more-->
-## pyvenv
-在Python3.5里集成了个工具(Python3.3开始就有)，pyvenv，这个工具跟virtualenv一样，能够用于构建
-虚拟环境，从而不必特地去安装virtualenv，其用法也跟virtualenv一样。
-
-    source ./bin/activte
+## virtualenv
+virtualenv是用来为一个应用创建一套"隔离"的Python运行环境
+`$virtualenv --no-site-packages venv`
+然后:
+    source ./venv/bin/activte
 
 启用虚拟环境，在该环境下，安装的包和python解释器都是在当前目录下，不会
 改变系统环境。
@@ -33,4 +32,20 @@ Python的pip也具备类似的功能(不过感觉没npm以及Bundler好用)。
     deactivate
 
 这样就可以退出虚拟环境了
+使用的时候我们会创建一个跟venv平行的目录，用来作为workdir，当使用git时候
+只需要在`.gitignore`文件里添加一句`./venv`就好了
+
+## pyvenv
+在Python3.5里集成了个工具(Python3.3开始就有)，pyvenv，这个工具跟virtualenv一样，能够用于构建
+虚拟环境，从而不必特地去安装virtualenv，其用法也跟virtualenv一样。
+
+    source ./venv/bin/activte
+
+启用虚拟环境，在该环境下，安装的包和python解释器都是在当前目录下，不会
+改变系统环境。
+
+    deactivate
+
+这样就可以退出虚拟环境了
+
 

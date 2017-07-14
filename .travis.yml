@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+- '6'
+branches:
+  only:
+  - dev
+before_install:
+- openssl aes-256-cbc -K $encrypted_91efcd0a5e7b_key -iv $encrypted_91efcd0a5e7b_iv
+  -in .travis/id_rsa.enc -out ~/.ssh/id_rsa -d
+- export TZ='Asia/Shanghai'
+- npm install -g hexo
+- chmod 600 ~/.ssh/id_rsa
+- eval $(ssh-agent)
+- ssh-add ~/.ssh/id_rsa
+- cp .travis/ssh_config  ~/.ssh/config
+- git config --global user.name "pyclearl"
+- git config --global user.email cappyclear@gmail.com
+install:
+- npm install
+script:
+- hexo clean && hexo g
+- hexo d

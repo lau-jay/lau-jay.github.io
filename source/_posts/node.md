@@ -32,7 +32,7 @@ tags: node
     最后一个是根目录的node_modules目录。
 
 ## process全局变量
-   
+
     process.argv获取命令行参数，argv[0]是nodejs执行程序的绝对地址，argv［1]是主模块的绝对路径，所以命令行参数
     从argv[2]这个位置开始.
 ## __dirname
