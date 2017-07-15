@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '7'
+  - '7'
 branches:
   only:
   - dev
@@ -19,4 +19,4 @@ install:
 - npm install
 script:
 - hexo clean && hexo g
-- hexo d
+- travis_wait hexo d
