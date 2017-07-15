@@ -17,9 +17,9 @@ tags: BIF
     一堆的类型，参数验证时非常好用
 
 - bytearray([x[)
-    ```
+    ```python
     In: bytearray(3)
-    Out: bytearray(b'\x00\x00\x00)
+    Out: bytearray(b'\x00\x00\x00')
     In: s = bytearray(3)
     In: s[0] 
     Out: 0
