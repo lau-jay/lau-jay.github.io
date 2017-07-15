@@ -10,9 +10,10 @@ before_install:
 - export TZ='Asia/Shanghai'
 - npm install -g hexo
 - chmod 600 ~/.ssh/id_rsa
-- eval $(ssh-agent)
+- eval $(ssh-agent -s)
 - ssh-add ~/.ssh/id_rsa
 - cp .travis/ssh_config  ~/.ssh/config
+- ssh-agent -k
 - git config --global user.name "pyclear"
 - git config --global user.email cappyclear@gmail.com
 install:
