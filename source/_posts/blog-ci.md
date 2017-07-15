@@ -24,4 +24,4 @@ deploy:
 - eval $(ssh-agent -s)
 - ssh-agent -k
 ```
-ssh-agent后需要执行带k参数的，把ssh-agent进程杀掉不然之后的访问github验证会有问题，就是没权限。
+ssh-agent后需要执行带k参数的，把ssh-agent进程杀掉不然travis由于有进程在跑，会没有输出，就算执成功了状态依旧会显示执行失败的。
