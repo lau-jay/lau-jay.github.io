@@ -48,4 +48,12 @@ virtualenv是用来为一个应用创建一套"隔离"的Python运行环境
 
 这样就可以退出虚拟环境了
 
+## python3 -m venv
+pyvenv 在Python3.6里已经被弃用了,文档原文是:
+
+```Deprecated since version 3.6: pyvenv was the recommended tool for creating virtual environments for Python 3.3 and 3.4, and is deprecated in Python 3.6.Changed in version 3.5: The use of venv is now recommended for creating virtual environments.
+```
+
+
+
 
