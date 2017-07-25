@@ -11,9 +11,9 @@ tags: tool
   先提交forgotten_file
 
     $ git  add forgoten_file
-  
+ 
   完了再
-  
+
     $ git commit --amend
 
 这样就可以把忘记的补上了，同时还可以修改说明
@@ -51,13 +51,13 @@ note: .git前的pyclear是Repositories，别误解
 `git reflog`
 可以列出你之前的所有git操作，但是这个也是有时限的，好像是一个月，不过已经够了。
 
-## 代码除bug了。不知道谁干的？
+## 代码出bug了。不知道谁干的？
 经常有时候会有冲突说，这bug是xxx写的，有版本管理很简单。能精确到某一行代码的
 的作者是谁。
 `git blame file`
 就能知道谁干的了。
 
-## 查看log想倒过来？
-看代码的时候我喜欢一个commit看过去，但是有些commit多了log会很长于是log的参数`--reverse`就派上用场了
+## 查看log想倒过来？
+看代码的时候我喜欢一个commit看过去，但是有些commit多了log会很长于是log的参数`--reverse`就派上用场了
 `git log --reverse`
 这命令会把commit按时间线从第一个开始递增展示

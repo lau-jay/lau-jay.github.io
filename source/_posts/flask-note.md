@@ -22,8 +22,7 @@ request context演化出request和session
  session  请求上下文 用户会话，用于存储请求之间需要“记住”的值的词典
 ```
 
-Flask在分发请求前激活请求上下文(还有程序上下文), 请求处理完成后再删除。请求上文文被激活后, 就可以使用
-request和session变量。
+Flask在分发请求前激活请求上下文(还有程序上下文), 请求处理完成后再删除。请求上文文被激活后, 就可以使用request和session变量。
 
 ### 请求钩子
 
