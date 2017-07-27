@@ -61,3 +61,7 @@ note: .git前的pyclear是Repositories，别误解
 看代码的时候我喜欢一个commit看过去，但是有些commit多了log会很长于是log的参数`--reverse`就派上用场了
 `git log --reverse`
 这命令会把commit按时间线从第一个开始递增展示
+
+##  只拉某一个分支
+由于我将博客的md文件放在github博客仓库的dev分支，在外的时候不想把build好的html也搞下来所以要指定clone分支
+`git clone -b <branch> <remote_repo>`
