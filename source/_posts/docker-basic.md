@@ -27,10 +27,16 @@ categories: docker
 docker组的时候是没有问题的。
 
 但是直接用docker命令叫起单个container的时候那个值可是直接就给docker的，
-并没有人解析补全路径，所以往往会报错。
+并不会解析补全路径，所以往往会报错。
 
 所以之后养成的习惯就是直接用`$(pwd)`这样可以避免出错，有时候忘了这茬还是会
 浪费点时间去看文档的。
+
+### link db error
+
+ 习惯使用docker开发后，配置新项目的开发环境，经常会遇到的一个问题是数据库不存在。但是明明数据库那个docker，已经up了。
+ 其实原因很简单，docker link不可以refer to localhost。而很多框架default的数据库的URI是localhost。
+ 在配置中将localhost改为DB那个container的名字就好了。
 
 
 
