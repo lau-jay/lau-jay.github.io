@@ -17,3 +17,13 @@ MySQL Engine:
 - InnoDB可以避免档案数量限制
 - 如果大小和数量都有限制需要改系统设置
 
+时间数据类型:
+
+- TIMESTAMP 具备'时区'特性，可以存储从`1970-01-01 00:00:00`到目前经过的秒数，包含完整的年, 月, 日与时分秒，不过使用的存储空间只有4bytes。
+- DATATIME 同TIMESTAMP比多了倍的存储开销，需要8bytes
+
+所以存时间数据的时候，可能会由于时区换算导致超过时间底线即`1970-01-01 00:00:00`。
+查看数据库关于时区的设定 `SELECT @@GLOBAL.TIME_ZONE, @@SESSION.TIME_ZONE;`
+`SET SESSION TIME_ZONE = '-08:00'`北京时间比格林威治时间早8个小时
+`SET GLOBAL TIME_ZONE = '+00:00'`
+
