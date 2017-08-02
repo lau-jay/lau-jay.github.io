@@ -23,8 +23,8 @@ categories: docker
 
 ### `.`,`./`,以及绝对路径
 写习惯了docker-compose.yaml就会出现一个问题: -v 给的路径写的时候
-常常会直接用相对路径，这在用yaml作为配置，用docker-compose编排叫起来
-docker组的时候是没有问题的。
+常常会直接用相对路径`.`或者`./directory`，这在用yaml作为配置，用docker-compose编排叫起来
+docker组的时候是没有问题的, 解析yaml的时候会补全的。
 
 但是直接用docker命令叫起单个container的时候那个值可是直接就给docker的，
 并不会解析补全路径，所以往往会报错。

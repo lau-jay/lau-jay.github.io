@@ -60,7 +60,8 @@ note: .git前的pyclear是Repositories，别误解
 就能知道谁干的了。
 
 ## 查看log想倒过来？
-看代码的时候我喜欢一个commit看过去，但是有些commit多了log会很长于是log的参数`--reverse`就派上用场了
+看代码的时候我喜欢一个commit看过去，但是有些commit多了log会很长于是log的参数
+`--reverse`就派上用场了:
 `git log --reverse`
 这命令会把commit按时间线从第一个开始递增展示
 

@@ -27,3 +27,4 @@ MySQL Engine:
 `SET SESSION TIME_ZONE = '-08:00'`北京时间比格林威治时间早8个小时
 `SET GLOBAL TIME_ZONE = '+00:00'`
 
+MySQL 限制'CURRENT_TIMESTAMP'一个表格中只能在一个字段出现
