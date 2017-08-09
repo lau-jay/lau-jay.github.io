@@ -28,3 +28,15 @@ MySQL Engine:
 `SET GLOBAL TIME_ZONE = '+00:00'`
 
 MySQL 限制'CURRENT_TIMESTAMP'一个表格中只能在一个字段出现
+
+触发器:
+
+- 每个表格最多可以建立六种trigger，每种只能有一个
+
+  BEFORE INSERT|AFTER INSERT
+  BEFORE UPDATE|AFTER UPDATE
+  BEFORE DELETE|AFTER DELETE
+
+
+
+
