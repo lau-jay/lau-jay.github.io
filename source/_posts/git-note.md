@@ -68,3 +68,16 @@ note: .git前的pyclear是Repositories，别误解
 ##  只拉某一个分支
 由于我将博客的md文件放在github博客仓库的dev分支，在外的时候不想把build好的html也搞下来所以要指定clone分支
 `git clone -b <branch> <remote_repo>`
+
+## 分支重命名
+重命名分支
+`git branch -m <oldname> <newname>`
+重命名当前分支
+`git branch -m <newname>`
+
+## 命令行删除远程分支
+查看远程分支
+`git branch -r `
+删除远程分支
+`git push origin :want_delete_branch_name`
+
