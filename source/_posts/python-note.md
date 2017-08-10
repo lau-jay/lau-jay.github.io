@@ -96,6 +96,13 @@ Python3删除了reload内置函数，将其放入imp标准库中了
 生成一个元组而不是创建个很大的元组列表，Python3的zip类似与izip()的方式。
 欢迎使用Python3。
 
+当zip产生的是迭代器的时候, 它的内容只能被消费一次，所以
+
+zip_number = zip([i for i in range(10)], [j for j in range(10)])
+print(list(zip_number)) # [(0,0),(1,1)...]
+print(list(zip_number)) # [] 空array
+
+
 ## 第一类
 所有能够用标识符命名的所有对象都是具有相同状态的，即能够命名的所有对象都可以当作数据处理
 Python中一切都是第一类的。
