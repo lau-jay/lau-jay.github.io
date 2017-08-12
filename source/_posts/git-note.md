@@ -81,3 +81,11 @@ note: .git前的pyclear是Repositories，别误解
 删除远程分支
 `git push origin :want_delete_branch_name`
 
+
+## 拆分子模块，并修改依赖
+`git submodule add 仓库地址 路径`
+
+git clone 的工程带有submodule时,因为并不会自动去拉取子模块
+需要执行：
+`git submodule update --init --recursive`
+
