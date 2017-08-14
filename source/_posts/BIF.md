@@ -21,7 +21,7 @@ tags: BIF
     In: bytearray(3)
     Out: bytearray(b'\x00\x00\x00')
     In: s = bytearray(3)
-    In: s[0] 
+    In: s[0]
     Out: 0
     In: s[0] = 255
     In: s[0]
@@ -51,3 +51,12 @@ tags: BIF
 
 - callable(obj)
   callable能够判断对象是否能调用
+
+- slice
+  ```
+  In [4]: nick_name = slice(0,4,1)
+  In [5]: s = 'Jane Austen'
+  In [6]: s[nick_name]
+  Out[6]: 'Jane'
+  ```
+  为硬编码的切片进行命名，提高可读性
