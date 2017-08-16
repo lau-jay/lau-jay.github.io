@@ -52,10 +52,11 @@ categories: elixir
 - tuple
     * method: elem
 
+- string interpolation
+    * `"hello #{:world}"`
 
 ## elixir-vim plug
 add a line to .vimrc:
-
     `Plug 'elixir-lang/vim-elixir'`
 last run in vim:
   `:PlugInstall`
