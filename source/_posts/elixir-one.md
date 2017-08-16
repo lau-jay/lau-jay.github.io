@@ -23,8 +23,8 @@ categories: elixir
     x = 9
     (fn x -> x + 1 end).(x) => 10
     x => 9
-   
-    
+ 
+
 ## `=` 不是赋值， 而是模式匹配(pattern match)  
 
 ## 一些基础数据类型
@@ -41,6 +41,9 @@ categories: elixir
 * atom
     * 类似ruby的符号(symbol）
     * 字符前加:就行了，大写字母开头的变量是一种原子，其等价于`:Elixir.变量名`
+    * `true == :true` # true
+    * is_atom(false) # true
+    * is_atom(:flase) # true
 *  string
     * 单引号定义字符串列表，双引号定义字符串
 * list
