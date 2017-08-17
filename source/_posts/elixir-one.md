@@ -46,14 +46,20 @@ categories: elixir
     * is_atom(:flase) # true
 *  string
     * 单引号定义字符串列表，双引号定义字符串
+    *  string interpolation  `"hello #{:world}"`
+    * byte_size("hellö") 返回所暂byte数
+    * String.length("hellö") 返回字符数
 * list
     * `++` or `--` 拼接列表或消除列表
     * method: length，hd，tl
+    * 当list里的整数是ascii打印数值的时候会返回一个单引号的字符串列表
+       ```
+         iex> [11, 12, 13]
+         '\v\f\r”
+       ```
 - tuple
     * method: elem
 
-- string interpolation
-    * `"hello #{:world}"`
 
 ## elixir-vim plug
 add a line to .vimrc:
