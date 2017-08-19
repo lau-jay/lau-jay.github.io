@@ -23,7 +23,7 @@ categories: elixir
     x = 9
     (fn x -> x + 1 end).(x) => 10
     x => 9
- 
+
 
 ## `=` 不是赋值， 而是模式匹配(pattern match)  
 
@@ -49,6 +49,7 @@ categories: elixir
     *  string interpolation  `"hello #{:world}"`
     * byte_size("hellö") 返回所暂byte数
     * String.length("hellö") 返回字符数
+    * "foo" <> "bar" # "foobar"
 * list
     * `++` or `--` 拼接列表或消除列表
     * method: length，hd，tl
@@ -60,6 +61,10 @@ categories: elixir
 - tuple
     * method: elem
 
+## operators
+    * or, and , not # 只接受boolean
+    * ||, &&, ! # accept arguments of any type
+    * number < atom < reference < function < port < pid < tuple < map < list < bitstring
 
 ## elixir-vim plug
 add a line to .vimrc:
