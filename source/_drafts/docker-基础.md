@@ -1,6 +1,6 @@
 ---
 title: docker-基础
-date: 2016-12-16 22:38:37
+date: 2017-8-16 22:38:37
 categories: docker
 tags: docker
 ---
@@ -25,7 +25,7 @@ Docker的介绍就不说了，都烂大街了。历史需要了解但这种反�
 ## Image
 
 在概述中说了Docker其实就是直接跑在内核上的，只是使用隔离出的文件系统，网络以及进程等。内核启动后，会挂载root文件系统提供用户空间支持，而Docker的Image其实
-就相当于一个文件系统，所以Docker的使用一定要root就是这个原因。Image提供了容器运行所需的各种文件、资源，以及运行时的
+就相当于一个文件系统，所以Docker的使用一定要root就是这个原因(待考证)。Image提供了容器运行所需的各种文件、资源，以及运行时的
 一些配置参数，镜像是只读的。
 
 Image的结构，从Dockerfile就可以看出点东西来，它是分层的，Dockerfile里的From的一般是基础
@@ -33,7 +33,6 @@ Image的结构，从Dockerfile就可以看出点东西来，它是分层的，Do
 ## Container
 
 ## Repository
-这个虽然有蛮多门道的，但实际上说起来是很简单的
 
 
 
