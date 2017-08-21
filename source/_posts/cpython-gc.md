@@ -19,7 +19,7 @@ Python的dict，tuple等内置数据结构的定义里包含里与GC有关的成
 ```
 而Pyobject结构体的ob_refcnt成员负责维持引用计数。
 
-##内存分配器
+## 内存分配器
 
 PyDict_New()      -> 3 (level)
 PyObject_GC_New() -> 2
