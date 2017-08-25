@@ -6,7 +6,6 @@ comments: true
 sharing: true
 footer: true
 ---
-### 现居于鹭岛
 ### Python粉丝，Web后端
 ### 欲做诸佛龙象，先做众生牛马。
 
