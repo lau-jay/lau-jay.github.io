@@ -103,6 +103,10 @@ print(list(zip_number)) # [(0,0),(1,1)...]
 print(list(zip_number)) # [] 空array
 
 
+## with
+
+* 从Python 2.7 和Python 3.1 起允许在with 语句中使用两个上下文管理器
+
 ## 第一类
 所有能够用标识符命名的所有对象都是具有相同状态的，即能够命名的所有对象都可以当作数据处理
 Python中一切都是第一类的。
