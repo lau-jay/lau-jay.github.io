@@ -37,7 +37,7 @@ MySQL 限制'CURRENT_TIMESTAMP'一个表格中只能在一个字段出现
   BEFORE UPDATE|AFTER UPDATE
   BEFORE DELETE|AFTER DELETE
 
-#### 事物
+#### 事务
 指作为单个逻辑工作单元执行的一系列操作，而这些逻辑工作单元需要具有原子性，一致性，隔离性和持久性四个属性，统称为ACID特性
 
 #### ACID
@@ -51,3 +51,13 @@ MySQL 限制'CURRENT_TIMESTAMP'一个表格中只能在一个字段出现
     BEGIN TRANSACTION 
     COMMIT 
     ROLLBACK
+
+
+#### drop、delete、truncate
+* delete和truncate只删除表的数据不删除表的结构
+* delete操作会放到rollback segment中，事务提交后猜生效，会触发trigger
+* truncate，drop操作立即生效，原数据不放倒rollback segment中，不能回滚，操作不触发trigger
+* 不需要一张表的时候用drop
+* 去除数据但保留表用truncate
+* 删除部分数据行用delete
+
