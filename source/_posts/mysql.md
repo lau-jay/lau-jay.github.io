@@ -37,6 +37,17 @@ MySQL 限制'CURRENT_TIMESTAMP'一个表格中只能在一个字段出现
   BEFORE UPDATE|AFTER UPDATE
   BEFORE DELETE|AFTER DELETE
 
+#### 事物
+指作为单个逻辑工作单元执行的一系列操作，而这些逻辑工作单元需要具有原子性，一致性，隔离性和持久性四个属性，统称为ACID特性
 
+#### ACID
+* 原子性(Atomicity)：事务中的所有元素作为一个整体提交或回滚，事务的个元素是不可分的，事务是一个完整操作。
+* 一致性(Consistemcy)：事物完成时，数据必须是一致的，也就是说，和事物开始之前，数据存储中的数据处于一致状态。保证数据的无损。
+* 隔离性(Isolation)：对数据进行修改的多个事务是彼此隔离的。这表明事务必须是独立的，不应该以任何方式以来于或影响其他事务。
+* 持久性(Durability)：事务完成之后，它对于系统的影响是永久的，该修改即使出现系统故障也将一直保留，真实的修改了数据库
 
+#### SQL语句
 
+    BEGIN TRANSACTION 
+    COMMIT 
+    ROLLBACK
