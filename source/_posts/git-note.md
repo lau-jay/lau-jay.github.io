@@ -17,7 +17,9 @@ tags: tool
     $ git commit --amend
 
 这样就可以把忘记的补上了，同时还可以修改说明
-```git commit --amend```命令需要的是提交的文件快照和之前一样，
+
+`git commit --amend`命令需要的是提交的文件快照和之前一样，
+
 所以上面的添加文件要在```git commit```之前。
 
 ## 总有些文件会一不小心add进暂存区内，取消暂存区的文件?
