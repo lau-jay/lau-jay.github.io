@@ -63,3 +63,7 @@ MySQL 限制'CURRENT_TIMESTAMP'一个表格中只能在一个字段出现
 * 去除数据但保留表用truncate
 * 删除部分数据行用delete
 
+
+## show warnings;
+
+* 执行完sql file 有时候会有warnings, 可以用这个命令查看, 有个问题是会被后面正常执行的给覆盖掉
