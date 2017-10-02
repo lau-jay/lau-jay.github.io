@@ -98,4 +98,8 @@ git clone 的工程带有submodule时,因为并不会自动去拉取子模块
 * 匹配模式最后跟反斜杠(`/`)说明要忽略的是目录
 * 要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号取反
 
-
+## 同步fork库
+经常会记不住同步的方式，特地记录下其实很简单
+`git remote add upstream URL`
+`git fetch upstream`
+`git merge upstraem/upstream`
