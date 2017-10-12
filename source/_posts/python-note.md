@@ -4,6 +4,7 @@ title: "Python note"
 date: 2016-07-12 16:41:52 +0800
 comments: true
 categories: python
+tags: python
 ---
 ## 负偏移
 字符串的负索引访问，其实可以这么看，就是访问字符串长度加上负数索引得到的index所指向的字符。
