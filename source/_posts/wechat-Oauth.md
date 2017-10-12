@@ -1,5 +1,5 @@
 ---
-title: django-model
+title: wechat auth
 date: 2017-10-11 22:17:09
 categories: python
 tags: web
