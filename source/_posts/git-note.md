@@ -4,7 +4,7 @@ title: "git 手记"
 date: 2016-07-10 18:32:28 +0800
 comments: true
 categories: git
-tags: tool
+tags: tools
 ---
 ## 经常碰到提交信息写错...或者commit后临时又要添加文件的操作?
 那么可以这样：

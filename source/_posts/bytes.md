@@ -2,7 +2,7 @@
 title: bytes
 date: 2017-06-13 21:56:48
 categories: python
-tags: code
+tags: python
 ---
 ## bytes
 虽然是二进制，但其实是整数序列，各个字节的值可能有三种情况:

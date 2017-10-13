@@ -4,6 +4,7 @@ title: "docker 基本使用"
 date: 2016-07-12 09:13:45 +0800
 comments: true
 categories: docker
+tags: tools
 ---
 ## docker使用笔记
 随用随记，并不成系统，主要是方便自己忘记的时候查阅。
