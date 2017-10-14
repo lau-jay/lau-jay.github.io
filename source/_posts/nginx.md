@@ -2,7 +2,7 @@
 title: Nginx代理CSS失效
 date: 2017-10-10 20:23:13
 categories: Nginx
-tags: web,tools
+tags: web tools
 ---
 # Nginx部署Vue
 写好Nginx的conf能够正常显示静态页面了，结果css全乱了。由于js

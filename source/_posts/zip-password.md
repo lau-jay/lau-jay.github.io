@@ -1,7 +1,7 @@
 ---
 title: zip_password
 date: 2017-06-11 00:03:22
-tags: Linx/UNIX
+tags: linx UNIX
 ---
 ### zip(OSX下)命令密码之惑
 无意间用常用的, 带特殊字符的密码压缩一个文档时候发现了个问题，我没法解压了。

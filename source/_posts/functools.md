@@ -1,8 +1,8 @@
 ---
 title: functools
 date: 2016-12-03 20:49:16
-categories: python 
-tags: stdlib
+categories: python
+tags: stdlib python
 ---
 ## functools module
 functools 模块包含了非常多很有用的函数，甚至可以说是比较常用的。这些函数主要用于创建高阶函数、函数式编程和装饰器的函数和装饰器。

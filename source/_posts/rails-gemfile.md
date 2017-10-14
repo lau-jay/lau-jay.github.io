@@ -4,7 +4,7 @@ title: "Rails Gemfile 写法"
 date: 2016-07-10 18:30:08 +0800
 comments: true
 categories: Rails
-tgas: tool
+tgas: tool ruby
 ---
 ## '~>tag'
 `~>2.0.3`与`~>2.1`这两种应该是很多看的比较熟悉的Gemfile的写法，前者表示当前版本大于等于2.0.3，

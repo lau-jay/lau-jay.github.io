@@ -1,8 +1,8 @@
 ---
 title: 内置函数与类型
 date: 2016-11-25 20:23:13
-categories: python
-tags: BIF
+categories: BIF
+tags: BIF python
 ---
 ## BIF(built-in functions) 和 type
 内置函数和一些类型对与解释器来说总是可用的, py2中存在于`__builtin__`

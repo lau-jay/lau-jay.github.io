@@ -2,7 +2,7 @@
 title: JS随笔
 date: 2017-03-28 21:38:29
 categories: js
-tags: ecma
+tags: reading
 ---
 ## 你不知道的JavaScript阅读笔记
 ## 作用域

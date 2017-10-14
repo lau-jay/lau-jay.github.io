@@ -4,6 +4,7 @@ title: "rails basic"
 date: 2016-07-16 08:24:24 +0800
 comments: true
 categories: Rails
+tags: ruby
 ---
 ## 生成app
 

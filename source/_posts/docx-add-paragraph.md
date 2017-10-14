@@ -3,8 +3,8 @@ layout: post
 title: "docx add paragraph"
 date: 2016-08-31 21:39:05 +0800
 comments: true
-categories: python 
-tags: regular
+categories: python
+tags: regular python
 ---
 ## Question
 接手了一份老代码, 使用docx库生成word文档，然后很奇怪有份文件代码一直运行不起来，没法生成word文档。

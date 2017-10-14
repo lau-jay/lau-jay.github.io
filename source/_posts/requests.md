@@ -4,6 +4,7 @@ title: "requests"
 date: 2016-08-24 20:48:15 +0800
 comments: true
 categories: python
+tags: python
 ---
 ## Question
 我一直以为按照meta去搞编码就ok了，然而事实上是然并卵。。例子之一是199IT的网页，看到meta charset="utf-8"

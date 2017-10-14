@@ -2,7 +2,7 @@
 title: django-model
 date: 2017-06-01 22:17:09
 categories: python
-tags: django
+tags: django python
 ---
 ## model
 ### 模型与表

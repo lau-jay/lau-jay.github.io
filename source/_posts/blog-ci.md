@@ -1,7 +1,7 @@
 ---
 title: blog-ci
 date: 2017-07-15 13:40:17
-tags: ci
+tags: ci python
 ---
 比较早之前，我的博客用的是jeklly, 当时各种换插件和配置都很麻烦, 后来果断切到了hexo。
 
