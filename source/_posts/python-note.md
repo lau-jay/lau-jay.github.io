@@ -248,6 +248,24 @@ del可以减少引用计数,虽然我不怎么用它。
 而{'1':1,'2':2,'3':3}是字典, {'12345'} == set(['12345']) 而
 set('12345') == {'1','2','3','4','5'}
 
+```
+In [9]: from dis import dis
+
+In [10]: dis('{1}')
+  1           0 LOAD_CONST               0 (1)
+              2 BUILD_SET                1
+              4 RETURN_VALUE
+
+In [11]: dis('set([1])')
+  1           0 LOAD_NAME                0 (set)
+              2 LOAD_CONST               0 (1)
+              4 BUILD_LIST               1
+              6 CALL_FUNCTION            1
+              8 RETURN_VALUE
+
+```
+采用{}构造set比set方式更快，因为不需要去匹配名字，所以三条指令就够了
+
 ## IPython _
 IPython中的_ 变量绑定的是前一个结果
 
