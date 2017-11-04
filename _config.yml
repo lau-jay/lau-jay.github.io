@@ -5,9 +5,9 @@
 # Site
 title: Pyclear
 subtitle: When in doubt, use brute force.
-description: pyclear的个人博客, 使用Python,Nodejs,Ruby, 喜欢Elixir,Vim党。
-author: pyclearl
-language: zh-CN
+description: Python后端,喜欢Elixir。
+author: Pyclearl
+language: zh-Hans
 timezone:
 
 # URL
