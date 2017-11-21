@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "mix install error"
-date: 2016-11-11 23:26:42 +0800
+date: 2017-11-20 23:26:42 +0800
 comments: true
 categories: elixir
 tags: elixir
