@@ -17,11 +17,8 @@ using mix install phoenixframework  have error
 Darwin PycleardeMacBook-Pro.local 17.0.0 Darwin Kernel Version 17.0.0: Thu Aug 24 21:48:19 PDT 2017; root:xnu-4570.1.46~2/RELEASE_X86_64 x86_64
 
 ## [search error message](http://mail-archives.apache.org/mod_mbox/couchdb-user/201709.mbox/%3C1735214007.1758.1506641159142.JavaMail.Joan@RITA%3E)
-
-
-    [This is an Erlang bug](https://bugs.erlang.org/browse/ERL-439)
-
-    [This commit fixed the problem](https://github.com/erlang/otp/commit/882c90f72ba4e298aa5a7796661c28053c540a96)
+[This is an Erlang bug](https://bugs.erlang.org/browse/ERL-439)
+[This commit fixed the problem](https://github.com/erlang/otp/commit/882c90f72ba4e298aa5a7796661c28053c540a96)
 
 ## solved
 brew upgrade erlang
