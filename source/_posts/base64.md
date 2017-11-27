@@ -1,7 +1,7 @@
 ---
 title: base64上传图片
-date: 2016-11-25 20:23:13
-categories: BIF
+date: 2017-11-25 20:23:13
+categories: python
 tags: python
 ---
 ## Convert Image To String
