@@ -269,5 +269,20 @@ In [11]: dis('set([1])')
 ## IPython _
 IPython中的_ 变量绑定的是前一个结果
 
+## dict的合并
+```
+In [3]: meta = {'x':1,'y':2}
 
+In [4]: x = {'x':2}
 
+In [5]: z = {**meta, **x}
+
+In [6]: z
+Out[6]: {'x': 2, 'y': 2}
+
+In [7]: z = {**x, **meta}
+
+In [7]: z
+Out[8]: {'x': 1, 'y': 2}
+```
+后面的dict的字段会覆盖前面的dict里的字段

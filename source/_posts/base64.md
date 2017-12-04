@@ -4,6 +4,11 @@ date: 2017-11-25 20:23:13
 categories: python
 tags: python
 ---
+## 缘由
+在做一个图片上传的微服务, 使用的是tornado, 利用tornado自带的表单上传,
+使用self.request.files, 结果移动端表示他们不会构造表单格式上传文件。
+由于之前没写过base64传图就特地去了解了下, 写了个接口出来。感觉不常写会忘,
+还是记录下吧。
 ## Convert Image To String
 ```
 import base64
