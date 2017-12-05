@@ -34,8 +34,8 @@ tags: tools
 ## 公司变土豪了，买github私有库了？
 转换仓库，从gitlab到github
 
-  git remote add upstream ssh://git@gitlab.xx.:workspace/project/pyclear.git
-  git remote set-url origin git@github.com:xxx/pyclear.git
+  `git remote add upstream ssh://git@gitlab.xx.:workspace/project/pyclear.git`
+  `git remote set-url origin git@github.com:xxx/pyclear.git`
 
 note: .git前的pyclear是Repositories，别误解
 
