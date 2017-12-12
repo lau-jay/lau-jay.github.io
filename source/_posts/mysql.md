@@ -48,20 +48,35 @@ MySQL 限制'CURRENT_TIMESTAMP'一个表格中只能在一个字段出现
 * 持久性(Durability)：事务完成之后，它对于系统的影响是永久的，该修改即使出现系统故障也将一直保留，真实的修改了数据库
 
 ## SQL语句
+### DDL
 
-    BEGIN TRANSACTION 
-    COMMIT 
-    ROLLBACK
+* CREATE: 创建数据库和表等对象
+* DROP: 删除数据库和表等对象
+* ALTER: 修改数据库和表等对象的结构
+
+### DML
+
+* SELECT: 查询表中的数据
+* INSERT: 向表中插入新数据
+* UPDATE: 更新表中的数据
+* DELETE: 删除表中的数据
+
+### DCL
+
+* COMMIT: 确认对数据库中的数据进行的变更
+* ROLLBACK: 取消对数据库中的数据进行的变更
+* GRANT: 赋予用户操作权限
+* REVOKE: 取消用户的操作权限
 
 
-## drop、delete、truncate
+### DROP、DELETE、TRUNCATE
 
-* delete和truncate只删除表的数据不删除表的结构
-* delete操作会放到rollback segment中，事务提交后猜生效，会触发trigger
-* truncate，drop操作立即生效，原数据不放倒rollback segment中，不能回滚，操作不触发trigger
-* 不需要一张表的时候用drop
-* 去除数据但保留表用truncate
-* 删除部分数据行用delete
+* DELETE和TRUNCATE只删除表的数据不删除表的结构
+* DELETE操作会放到ROLLBACK SEGMENT中，事务提交后猜生效，会触发Trigger
+* TRUNCATE，DROP操作立即生效，原数据不放到ROLLBACK SEGMENT中，不能回滚，操作不触发trigger
+* 不需要一张表的时候用DROP
+* 去除数据但保留表用TRUNCATE
+* 删除部分数据行用DELETE
 
 
 ## show warnings;
