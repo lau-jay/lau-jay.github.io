@@ -1,5 +1,11 @@
-
-# 网络编程历史
+---
+title: 网络编程文章阅读笔记
+date: 2017-12-17 1:38:29
+categories: js
+tags: reading
+---
+[auxten网络编程阅读笔记](https://zhuanlan.zhihu.com/p/32059005)
+# 历史
 * 一次处理一个连接
 * 每个连接开个进程
 * 引入线程减少开进程的开销
