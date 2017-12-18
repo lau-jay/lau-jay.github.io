@@ -1,7 +1,7 @@
 ---
 title: 网络编程文章阅读笔记
 date: 2017-12-17 1:38:29
-categories: js
+categories: note
 tags: reading
 ---
 [auxten网络编程阅读笔记](https://zhuanlan.zhihu.com/p/32059005)
