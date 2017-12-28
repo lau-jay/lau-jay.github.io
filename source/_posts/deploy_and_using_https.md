@@ -16,9 +16,6 @@ tags: note
 
 ## 配置Nginx
 ```
-upstream tornadoes {
-        server 127.0.0.1:9600;
-}
 server {
     listen       443 ssl;
     server_name  subdomain.dommain.com;
@@ -29,33 +26,8 @@ server {
 
 	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
     ssl_prefer_server_ciphers  on;
+    ...
 
-	location / {
-       index index.html;
-       root /home/work/static;
-       try_files $uri $uri/ @router;
-    }
-
-    location @router {
-       rewrite ^.*$ /index.html last;
-    }
-
-    access_log  subdomain.access.log  main;
-
-
-    error_page   500 502 503 504  /50x.html;
-    location = /50x.html {
-        root   html;
-    }
-
-	location /admin {
-        proxy_pass_header Server;
-        proxy_set_header Host $http_host;
-        proxy_redirect off;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Scheme  $scheme;
-        proxy_pass http://tornadoes;
-    }
 }
 ```
 
