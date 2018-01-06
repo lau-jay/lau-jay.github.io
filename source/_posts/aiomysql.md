@@ -1,7 +1,8 @@
 ---
 title: aiomysql
 date: 2018-01-06 15:30:17
-tags: python
+categories: python
+tags: aiomysql
 ---
 突然兴起，去试了试aiomysql, 记录下遇到的问题。
 
