@@ -6,7 +6,7 @@ comments: true
 sharing: true
 footer: true
 ---
-### Web后端Python粉丝Elixir爱好者
+### Python Backend Developer.
 ### 欲做诸佛龙象，先做众生牛马。
 
 ### 联系我呗
