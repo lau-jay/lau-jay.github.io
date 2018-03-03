@@ -20,7 +20,7 @@ Python3文本总是Unicode,用str表示，二进制数据由bytes类型表示。
 
 说到unicode,想起很多人其实是搞不清楚unicode,和UTF-8,UTF-16等这些的关系，多说句。其实很简单，unicode是一个字符集，UTF是一个编码方案或者说具体实现。这实现有好几种，于是就在UTF后加上编码单位，比如8就是使用8比特为单位来编码。关于编码更多更具体的可以看[这](http://aju.space/2015/11/10/Python-character-encoding-explained.html)
 
-Python3的bytes/str类型让网络相关的底层库比较难以改,我以前只知道这件事，但是没有很深刻的认知。
-最近将一段socket代码改为Python3，浏览器收到的字符永远是缺少的。
-仔细查看后发觉问题处在content-length这个header字段上，bytes后的的字符串的长度跟原字符串长度会变长。
+Python3的bytes/str类型让网络相关的底层库比较以迁移到Python3,我以前只知道这件事，但是没有很深刻的认知。
+最近将一段Python2代码改为Python3，浏览器收到的字符永远是缺少的。
+仔细查看后发觉问题出在content-length这个header字段上，bytes后的的字符串的长度跟原字符串长度会变长。
 而我传入的是原长度，所以浏览器解析的是原长度，于是就显得比原来的少。
