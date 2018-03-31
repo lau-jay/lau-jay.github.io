@@ -16,8 +16,8 @@ tags: note
 
    ```
    acme.sh --installcert -d www.your-app.com \
-               --keypath       /home/ubuntu/www/ssl/www.your-app.com.key  \
-               --fullchainpath /home/ubuntu/www/ssl/www.your-app.com.key.pem \
+               --keypath       /home/work/www/ssl/www.your-app.com.key  \
+               --fullchainpath /home/work/www/ssl/www.your-app.com.key.pem \
                --reloadcmd     "sudo service nginx force-reload"
    ```
    这里是ubuntu上的用法,而我用的服务器是CentOS系统的,所以最后一句需要改为
