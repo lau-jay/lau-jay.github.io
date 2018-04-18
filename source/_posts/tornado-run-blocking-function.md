@@ -19,15 +19,16 @@ guide里异步和非阻塞I/O节第二段就说了：
 用了`run_on_exexutor`于是就翻到这个函数的文档，然后发现文档里多了句这个` In general, using run_in_executor 
 when calling a blocking method is recommended instead of using this decorator when defining a method.`
 什么时候出现的难道是我以前看英文没认真。于是搜了下这个函数在[这里](http://www.tornadoweb.org/en/stable/guide/coroutines.html#calling-blocking-functions)
-看到了这个示例:
+在文档里看到了这个示例:
 
 ```
 @gen.coroutine
 def call_blocking():
     yield IOLoop.current().run_in_executor(blocking_func, args)
 ```
-然后跟一个大佬分享了，大佬说那这个blocking_func是任意的都可以么，于是带着这个疑问我再翻了下文档，点过去看到了这个函数的声明与注释。
-`Runs a function in a concurrent.futures.Executor` 看到concurrent你们会想到啥，反正我脑子里冒出了ThreadPool和ProcessPool。
+然后跟一个大佬分享了，大佬说那这个blocking_func是任意的都可以么，于是带着这个疑问我再翻了下文档，
+点过去看到了这个函数的声明与注释，原来是5.0新加的。`Runs a function in a concurrent.futures.Executor` 看
+到concurrent你们会想到啥，反正我脑子里冒出了ThreadPool和ProcessPool。
 ```
   def run_in_executor(self, executor, func, *args):
         """Runs a function in a ``concurrent.futures.Executor``. If
@@ -53,7 +54,7 @@ def call_blocking():
         self.add_future(c_future, lambda f: chain_future(f, t_future))
         return t_future
 ```
-源码如上, 清晰明了，官方也是简单粗暴，耗时的我在开个线程池来处理就好了。
+源码如上, 清晰明了，官方也是简单粗暴，耗时的我再开个线程池来处理就好了。
 以后如果阻塞的函数都可以用这个run_in_executor了。这样你的代码就能用正确的姿势
 跑在Tornado框架里了。
 
