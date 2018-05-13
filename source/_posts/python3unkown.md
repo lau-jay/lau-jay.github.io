@@ -99,3 +99,16 @@ In [25]: @lru_cache(maxsize=32)
     ...:
 
 ```
+
+## pahtlib
+```
+from pathlib import Path
+
+directory = Path("/etc")
+filepath = directory / "hosts"
+
+if filepath.exists():
+    print('hosts exist')
+
+```
+这个比通常用os库做的优雅多了。。特别是filepath这句特别黑魔法
