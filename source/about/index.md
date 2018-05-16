@@ -13,4 +13,4 @@ footer: true
 OSX: `echo Y2FwcHljbGVhckBnbWFpbC5jb20= | base64 -D`
 Linux: `echo Y2FwcHljbGVhckBnbWFpbC5jb20= | base64 -d`
 ## 要科学上网买这个呗
-[here](https://bandwagonhost.com/aff.php?aff=10011)
+[here](https://bwh1.net/aff.php?aff=10011)
