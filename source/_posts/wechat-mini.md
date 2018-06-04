@@ -1,9 +1,10 @@
 ---
-title: 微信小程序坑点: 40029,invalid code
-date: 2018-06-01 13:20:13
+title: 微信小程序坑点
+date: 2018-06-04 13:20:13
 categories: python
-tags: issue
+tags: web
 ---
+
 前天为了获取session_key和openid，后端拿到code之后无论怎么请求都是invalid code。
 从appid到各种配置，乃至调用次数全查了个遍没查到为啥。
 从各种渠道搜到的都是说应该是appid或者secret错误，但是确认无误了。
