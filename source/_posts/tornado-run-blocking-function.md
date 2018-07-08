@@ -1,7 +1,7 @@
 ---
 title: Tornado执行阻塞函数
 date: 2018-04-18 09:32:17
-categories: Python
+categories: python
 tags: Tornado
 ---
 ## 使用Tornado时执行阻塞函数的姿势
