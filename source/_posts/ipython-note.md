@@ -1,8 +1,8 @@
 ---
-title: Ipython 笔记
+title: IPython 笔记
 date: 2018-07-08 10:06:13
 categories: python
-tags: Ipython
+tags: IPython
 ---
 
 ```
@@ -12,7 +12,7 @@ In [2]: %autoreload 2
 
 In [3]: from foo import some_function
 ```
-之后对some_function的更改会自动reload，直接在Ipython命令行里用就是最新的了。
+之后对some_function的更改会自动reload，直接在IPython命令行里用就是最新的了。
 
 ```
 In [4]: from glob import glob
