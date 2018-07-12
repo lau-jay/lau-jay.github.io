@@ -654,23 +654,23 @@ vendors:
   # Internal version: 2.1.5
   # See: http://fancyapps.com/fancybox/
   fancybox:
-  fancybox_css:
+  fancybox_css: //cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css
 
   # Internal version: 1.0.6
   # See: https://github.com/ftlabs/fastclick
-  fastclick:
+  fastclick: //cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js
 
   # Internal version: 1.9.7
   # See: https://github.com/tuupola/jquery_lazyload
-  lazyload:
+  lazyload: //cdn.jsdelivr.net/jquery.lazyload/1.9.7/jquery.lazyload.min.js
 
   # Internal version: 1.2.1
   # See: http://VelocityJS.org
-  velocity:
+  velocity: //cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js
 
   # Internal version: 1.2.1
   # See: http://VelocityJS.org
-  velocity_ui:
+  velocity_ui: //cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js
 
   # Internal version: 0.7.9
   # See: https://faisalman.github.io/ua-parser-js/
