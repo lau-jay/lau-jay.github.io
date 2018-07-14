@@ -4,7 +4,9 @@ title: "docker部署pyspider"
 date: 2016-07-18 11:37:52 +0800
 comments: true
 categories: docker
-tags: tools python
+tags: 
+    - tools
+    - python
 ---
 ## 缘起
 最近在搞docker部署pyspider，pyspider是一个非常灵活用户友好的爬虫框架，基于该框架能够很容易写出可控的爬虫。
