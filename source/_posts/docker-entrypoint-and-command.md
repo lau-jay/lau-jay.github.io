@@ -4,7 +4,9 @@ title: "docker entrypoint"
 date: 2016-08-01 21:53:38 +0800
 comments: true
 categories: docker
-tags: pyspider docker
+tags: 
+    - pyspider 
+    - docker
 ---
 ## entrypoint
 今天在重新部署pyspider, 自己写了写代码利用框架，抽了个api出来，然而怎么放进docker里成了一个问题。

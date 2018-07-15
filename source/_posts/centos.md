@@ -2,7 +2,9 @@
 title: CentOS
 date: 2017-09-11 20:23:13
 categories: Linux
-tags: linux python
+tags: 
+    - centos
+    - python
 ---
 CentOS升级Python 之后，由于将默认的python 指向了python3，yum不能正常使用，
 需要编辑yum 的配置文件。

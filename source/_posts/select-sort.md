@@ -4,12 +4,13 @@ title: "select sort"
 date: 2016-08-27 21:30:07 +0800
 comments: true
 categories: python
-tags: algorithms sort
+tags: 
+    - algorithms 
+    - sort
 ---
 
 ## select sort
-闲着没事，就想起写写排序的算法，因为从来没用Python写过算法，依据算法的原理很快
-就撸了个选择排序：
+闲着没事，就想起写写排序的算法，因为从来没用Python写过算法，依据算法的原理很快就撸了个选择排序：
 
     def select_sort(ary):
         for i in range(len(ary)):
@@ -35,29 +36,25 @@ index的一个特性是返回第一个符合传入参数的元素的index。
 
 中ary.index就成了全list索引而不是扣除已经排好序的剩余list元素中比较。
 
-改成index = i + ary[i:].index(min(ary[i:]))
+改成index = ary.index(min(ary[i:]), i)
 
     def select_sort(ary):
         for i in range(len(ary)):
             tmp = ary[i]
-            index = i + ary[i:].index(min(ary[i:]))
+            index = ary.index(min(ary[i:]), i)
             ary[i] = ary[index]
             ary[index] = tmp
         return ary
 
 
-就OK了，这其中还有个坑是如果漏了i,那么左值index仅仅是子序列ary[i:]的index，
-而不是整个ary的index，这样必然会给等下的swap造成问题的。最后利用python
-交换值的语法糖改写代码:
+最后利用python交换值的语法糖改写代码:
 
     def select_sort(ary):
         for i in range(len(ary)):
-            index = i + ary[i:].index(min(ary[i:]))
+            index = ary.index(min(ary[i:]), i)
             ary[i], ary[index] = ary[index], ary[i]
         return ary
 
 这样只需要几行的选择排序就完成了，不过我没测试过这样反复的切片和使用min开销会不会很大，
 这短短几行给我的一个教训是，使用对象的方法一定要注意全面了解方法。
-
-
 
