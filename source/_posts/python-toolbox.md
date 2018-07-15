@@ -4,7 +4,7 @@ title: "python toolbox"
 date: 2016-07-22 21:59:12 +0800
 comments: true
 categories: python
-tag: tool
+tag: tools
 ---
 ## 包管理工具
 Python有很多非常棒的工具，pip应该是最最常用，也是最最基本，在pytoon的地位

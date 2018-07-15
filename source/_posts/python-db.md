@@ -1,7 +1,9 @@
 ---
 title: python and db
 date: 2017-07-01 10:33:07
-tags: db python
+tags: 
+    - orm
+    - python
 ---
 
 ## SQLAlchemy

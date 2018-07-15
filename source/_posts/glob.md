@@ -2,7 +2,9 @@
 title: glob
 date: 2016-11-27 19:24:16
 categories: python
-tags: stdlib python
+tags: 
+    - stdlib
+    - glob
 ---
 ## glob module
 glob通过匹配来查找文件，该模块暴露出来三个函数glob, iglob, escape
