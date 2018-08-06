@@ -2,7 +2,10 @@
 title: CentOS升级HTTPS
 date: 2017-12-28 21:38:29
 categories: Nginx
-tags: note
+tags: 
+    - https
+    - nginx
+    - web
 ---
 ## 升级https
 最近需要将域名升级为https, 以满足安全性和一些第三方接口的要求。
