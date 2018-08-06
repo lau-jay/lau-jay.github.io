@@ -58,3 +58,18 @@ index的一个特性是返回第一个符合传入参数的元素的index。
 这样只需要几行的选择排序就完成了，不过我没测试过这样反复的切片和使用min开销会不会很大，
 这短短几行给我的一个教训是，使用对象的方法一定要注意全面了解方法。
 
+最近在看算法。。回过头看。这个真是写的糟糕啊
+```
+def select_sort(ary):
+    l = len(ary)
+    for i in range(l):
+        mini = i
+        for j in range(i+1, l):
+            if a[j] < a[mini]:
+                mini = j
+        a[i], a[mini] = a[mini], a[i]
+```
+简单直白。。上面那个晦涩之余还浪费空间。。
+
+update by: 2018-08-05
+
