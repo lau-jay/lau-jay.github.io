@@ -9,11 +9,27 @@ Python3文本总是Unicode,用str表示，二进制数据由bytes类型表示。
 里面有句话是精髓所在: *The encoding is a crucial part of this translation process*
 编码是核心所在:
     ```
-    >>>'€20'.encode('utf-8')
+    >>>'€20'.encode('utf-8') # str to bytes
     b'\xe2\x82\xac20'
-    >>> b'\xe2\x82\xac20'.decode('utf-8')
+    >>> b'\xe2\x82\xac20'.decode('utf-8') # bytes to str
     '€20'
     ```
+
+```
+def to_str(bytes_or_str):
+    if isinstance(bytes_or_str, bytes):
+        value = bytes_or_str.decode('utf-8')
+    else:
+        value = bytes_or_str
+    return value # is str
+
+def to_bytes(bytes_or_str):
+    if isinstance(bytes_or_str, str):
+        value = bytes_or_str.encode('utf-8')
+    else:
+        value = bytes_or_str
+    return value # is bytes
+```
 字符是与特定二进制无关的抽象实体，每个字符几个字节保存在抽象上看无关紧要，只有编码解码的时候
 才需要关注，延伸到Python2常见的编码问题，其实本质就是一句话。以什么编码就以什么解码-by[阿驹](http://aju.space/2015/11/10/Python-character-encoding-explained.html)
 
