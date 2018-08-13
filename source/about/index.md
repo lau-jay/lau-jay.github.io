@@ -11,6 +11,10 @@ footer: true
 ### 联系方式
 OSX: `echo Y2FwcHljbGVhckBnbWFpbC5jb20= | base64 -D`
 Linux: `echo Y2FwcHljbGVhckBnbWFpbC5jb20= | base64 -d`
+
+### 雇佣我
+
+[resume](./resume.pdf)
 ---
 ### 要科学上网买这个呗
 [here](https://bwh1.net/aff.php?aff=10011)
