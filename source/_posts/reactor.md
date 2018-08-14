@@ -75,3 +75,8 @@ epoll 的描述符事件有两种触发模式：LT（level trigger）和 ET（ed
 
 
 谈及LT和ET是因为Tornado在未降级到select的时候使用的epoll，并且是LT模式的。select由于几乎所有的系统都支持，所以在没有epoll的UNIX系统会使用kqueue，如果epoll或者kqueue都不存在那么tornado会降级为select I/O复用。
+
+
+### 参考
+* https://github.com/CyC2018/Interview-Notebook/blob/master/notes/Socket.md
+* http://www.cnblogs.com/dawen/archive/2011/05/18/2050358.html
