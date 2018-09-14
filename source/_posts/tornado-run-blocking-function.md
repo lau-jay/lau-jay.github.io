@@ -26,6 +26,12 @@ when calling a blocking method is recommended instead of using this decorator wh
 def call_blocking():
     yield IOLoop.current().run_in_executor(blocking_func, args)
 ```
+
+UPDATE: 以下是5.1文档更改后的示例
+```
+async def call_blocking():
+    await IOLoop.current().run_in_executor(blocking_func, args)
+```
 然后跟一个大佬分享了，大佬说那这个blocking_func是任意的都可以么，于是带着这个疑问我再翻了下文档，
 点过去看到了这个函数的声明与注释，原来是5.0新加的。`Runs a function in a concurrent.futures.Executor` 看
 到concurrent你们会想到啥，反正我脑子里冒出了ThreadPool和ProcessPool。
