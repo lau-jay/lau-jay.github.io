@@ -56,7 +56,7 @@ ASGI由两个不同的组件组成
 
 ## 事件
 
-ASGI将协议分解为一系列应用程序必须响应的*事件*，这个与有序的两个事件一样简单-`http.request`与`http.disconnect`。针对像WebSocket，可能是`websocket.connect`,`websocket.receive`,`websocket.receive`,`websocket.disconnect`。
+ASGI将协议分解为一系列应用程序必须响应的*事件*，这个与有序的两个事件一样简单-`http.request`与`http.disconnect`。针对像WebSocket，可能是`websocket.connect`,`websocket.send`,`websocket.receive`,`websocket.disconnect`。
 
 每个事件都是一个`dict`并带着一个顶层`type`key，包含信息类型的一个unicode 字符串。使用者可以自由的建立他们自己的消息类型，并在应用实例间发送他们以处理高级事件-举个例子，一个聊天程序可能会发送一个`mychat.message`类型的聊天信息。预估饮用程序可以处理多种事件类型混合的事件集，其中一些来自客户端连接，另外一些则来自应用的其他部分。
 
