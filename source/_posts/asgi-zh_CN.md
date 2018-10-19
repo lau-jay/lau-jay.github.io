@@ -15,7 +15,7 @@ tags: python3
 
 ## 依据
 
-WSGI 规范自诞生以来应用广泛，让 Python 框架和 web 服务的选择上有很大的自由。然而，因为设计的与 HTTP 风格的请求响应模型的耦合太强，加上越来越多不遵循这种模式的协议逐渐成为 web 编程的标准之一，比如说，WebSocket。
+WSGI 规范自诞生以来应用广泛，让 Python 框架和 web 服务器的选择上有很大的自由。然而，因为设计的与 HTTP 风格的请求响应模型的耦合太强，加上越来越多不遵循这种模式的协议逐渐成为 web 编程的标准之一，比如说，WebSocket。
 ASGI 尝试在保证应用接口简单的前提下，提供一个允许数据能够在任意时候、被任意应用进程发送和接受的抽象。
 
 它同样采用将协议转换为Python兼容，异步友好的消息集的原则，并将其概括为两部分：一个关于构建服务器的标准通信接口，以及一组用于每个协议的标准通信协议。
@@ -56,7 +56,7 @@ ASGI由两个不同的组件组成
 
 ## 事件
 
-ASGI将协议分解为一系列应用程序必须响应的*事件*，这个与有序的两个事件一样简单-`http.request`与`http.disconnect`。针对像WebSocket，可能是`websocket.connect`,`websocket.send`,`websocket.receive`,`websocket.disconnect`。
+ASGI将协议分解为一系列应用程序必须响应的*事件*，这个与有序的两个事件一样简单-`http.request`与`http.disconnect`。针对像WebSocket，可能是`websocket.connect，websocket.send，websocket.receive，websocket.disconnect`。
 
 每个事件都是一个`dict`并带着一个顶层`type`key，包含信息类型的一个unicode 字符串。使用者可以自由的建立他们自己的消息类型，并在应用实例间发送他们以处理高级事件-举个例子，一个聊天程序可能会发送一个`mychat.message`类型的聊天信息。预估饮用程序可以处理多种事件类型混合的事件集，其中一些来自客户端连接，另外一些则来自应用的其他部分。
 
