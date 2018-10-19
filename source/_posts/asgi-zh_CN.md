@@ -53,3 +53,53 @@ ASGI由两个不同的组件组成
 有些协议可能会提供一个连接，但只有非常有限的信息，因为他们封装了握手之类的东西。每个协议定义都必须包含关于连接持续多长的信息，与能从中获得哪种类型的信息。
 
 应用程序在被初始化与给定连接域时不能与客户端进行通信；他们必须等待到事件循环根据协议规范运行，可能必须等到初次打开的信息。
+
+## 事件
+
+ASGI将协议分解为一系列应用程序必须响应的*事件*，这个与有序的两个事件一样简单-`http.request`与`http.disconnect`。针对像WebSocket，可能是`websocket.connect`,`websocket.receive`,`websocket.receive`,`websocket.disconnect`。
+
+每个事件都是一个`dict`并带着一个顶层`type`key，包含信息类型的一个unicode 字符串。使用者可以自由的建立他们自己的消息类型，并在应用实例间发送他们以处理高级事件-举个例子，一个聊天程序可能会发送一个`mychat.message`类型的聊天信息。预估饮用程序可以处理多种事件类型混合的事件集，其中一些来自客户端连接，另外一些则来自应用的其他部分。
+
+因为这些信息可能来自其它网络，他们需要被序列化，因此信息被要求只能包含以下几种类型：
+
+* Byte strins
+* Unicode strings
+* Integers (within the signed 64 bit range)
+* Floating point numbers (within the IEEE 754 double precision range, no `Nan` or infinities)
+* Lists (tuples should be encoded as lists)
+* Dicts (keys must be unicode strings)
+* Booleans
+* `None`
+
+## 应用
+
+ASGI应用被定义成可调用的:
+
+`application(scope)应用（域）`
+
+* `域`: 连接域，一个至少包含一个`type`key所指定传入协议的字典 
+
+每当一个新的连接进入协议服务器，这个第一个可调用的对象在有新连接时会被调用并建立一个新的*实例* （这个实例时一个新的对象，第一次被调用时候返回）
+
+这个调用时一个同步的，且不同包含阻塞调用（建议只作为存储的域）。假如你需要执行阻塞的工作，则必须在下一个可以调用的开始时执行它，然后你的应用才会进入await等待事件执行完。
+
+他必须返回另一个，awaitable的调用：
+
+```python
+协程 application_instance(receive, send)
+```
+
+* `receive`，一个awaitable调用的函数，当可用的时候他会` yield` 一个新的事件字典事件
+
+* `send`,  一个awaitable调用的单个事件字典作为一个位置参数，一但发送完成就会返回
+
+这个设计也许更容易被认为是一个可能的实现，像是一个类:
+
+```Python
+class Application:
+    def __init__(self, scope):
+        self.scope = scope
+    async def __call__(self, receive, send):
+        ...
+```
+
