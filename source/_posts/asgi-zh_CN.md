@@ -108,3 +108,20 @@ class Application:
 无论scope或者你接收或发送的报文格式都是基于应用协议的。scope必须是一个dict，键scope["type"]始终存在，并可用于确定使用的协议类型。
 
 协议特定的子规范包含了这些scope和报文的格式。他们相当于WSGI规范定义的字典中的`environ`键。
+
+## 协议规范
+
+这里描述各种协议的标准化域和报文格式。
+
+一个在所有的域和报文中都存在的公共键是`type`, 用于表明正在接收哪种类型的域或者报文。
+
+在域中，`type`键必须是一个unicode字符串，像是"http"或者是"websocket",如相关协议规范中的定义所示。
+
+在 报文中，类型应命名为`protocol.message_type`，其中协议与域类型匹配，`message_type`由协议规范定义。消息类型值的示例包括`http.request`和`websocket.send`
+
+当前协议规范:
+
+* [HTTP and WebSocket](https://github.com/django/asgiref/blob/master/specs/www.rst)
+
+
+
