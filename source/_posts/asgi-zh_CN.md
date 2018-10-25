@@ -4,7 +4,7 @@ date: 2018-10-17 07:00:39
 categories: python
 tags: python3
 ---
-# ASGI(Asynchronous Server Gateway Interface) Specification
+# 异步服务网关接口(Asynchronous Server Gateway Interface) 规范
 *Version*:2.0(2017-11-28)
 
 ## 摘要
@@ -141,3 +141,49 @@ class Application:
 
 服务器可以自由的展示错误，这些错误会从他们正在运行的应用实例中抛出，但是他们希望在控制台打印log，发送到系统日志或者其他操作-但是如果发生这种情况，他们必须终止应用程序实例以及其关连的连接。
 
+## 扩展
+
+有时候基于ASGI协议的服务器可能希望在核心ASGI协议规范之外提供特定服务器的扩展，或者在规范的更改被发布之前进行试运行。
+
+对于这种情况，我们定义了一个通用模式`extensions`-对协议规范的名称添加是可选的，但如果由服务器提供并由应用程序解析，则可用于获取更多功能。
+
+这是通过字典中的一个 `extensions`字段，其本身值就是一个字典。扩展名由一个在服务器和应用程序之间达成一致的unicode字符串名称。
+
+如果服务器支持扩展名，它应该在`extensions`值对应的字典内加入一个扩展名，扩展名对应的值也是一个字典。
+
+服务器可以提供任何额外的域信息，这些信息属于该字典值中扩展的那部分，或者如果扩展只是表明服务器通过`send` 可调用函数接受附加事件，则它可能是一个空字典。
+
+As an example, imagine a HTTP protocol server wishes to provide an extension that allows a new event to be sent back to the server that tries to flush the network send buffer all the way through the OS level. It provides an empty entry in the extensions dict to signal that it can handle the event:
+
+例如，假設 HTTP 協議服務器希望提供一個擴展，允許將新事件發送回嘗試刷新網絡發送緩衝區的服務器， 直到整個操作系統級別。它在擴展詞典中提供一個空的條目來表明它可以處理該事件:
+
+一个例子是，假设HTTP协议服务器希望提供一个扩展，允许将新事件发送回尝试通过操作系统刷新网络发送缓存区的服务器。它在扩展字典中提供一个空的字段来表明它可以处理该事件:
+
+```python
+scope = {
+    "type": "http",
+    "method": "GET",
+    ...
+    "extensions": {
+        "fullflush": {},
+    },
+}
+```
+
+如果应用获取到这个空字段，它就知道它可以发送自定义事件（通过类型为`http.fullflush`的`send`调用）。
+
+### 字符串与Unicode
+
+在本文档和所有子规范中，字节字符串指的是 bytes Python3中的类型。Unicode字符串指的`str`是Python3中的类型。
+
+这个文档永远不会指定字符串-所有string都是两种确切类型之一。
+
+所有的字典key（包括域和事件）都是unicode字符串。
+
+## Version History
+
+- 2.0 (2017-11-28): Initial non-channel-layer based ASGI spec
+
+## Copyright
+
+This document has been placed in the public domain.
