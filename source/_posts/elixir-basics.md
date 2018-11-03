@@ -69,6 +69,6 @@ tags: elixir
 
 ## elixir-vim plug
 add a line to .vimrc:
-    `Plug 'elixir-lang/vim-elixir'`
+    `Plug 'elixir-editors/vim-elixir'`
 last run in vim:
   `:PlugInstall`
