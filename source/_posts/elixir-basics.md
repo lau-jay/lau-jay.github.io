@@ -36,6 +36,7 @@ tags: elixir
     * elixir 文档描述函数一般是:
         `<函数名>/<元数>
         元数可以理解为函数的参数个数`
+    * elixir 里唯一为假值的是`nil` 和 false
 * number
     * integer
     * float (64位双精度浮点)
@@ -66,9 +67,3 @@ tags: elixir
     * or, and , not # 只接受boolean
     * ||, &&, ! # accept arguments of any type
     * number < atom < reference < function < port < pid < tuple < map < list < bitstring
-
-## elixir-vim plug
-add a line to .vimrc:
-    `Plug 'elixir-editors/vim-elixir'`
-last run in vim:
-  `:PlugInstall`
