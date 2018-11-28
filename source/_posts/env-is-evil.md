@@ -10,7 +10,7 @@ tags:
 ## What issue?
 The ycmd server SHUT DOWN (restart with ':YcmRestartServer'). Unexpected exit code -11.
 
-## try fixed
+## Try fixed
 
 ```shell
 ./install.py --clang-completer
@@ -31,7 +31,7 @@ In pdb shell p sysconfig.get_config_var("LIBPL"), result show  path is fault, no
 
 I try hard code absolute path in GetPossiblePythonLibraryDirectories, but no working.
 
-## fixed
+## Fixed
 
 Anyway,  in ycm issues find miniconda3 will conflict.
 
