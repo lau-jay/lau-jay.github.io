@@ -10,7 +10,7 @@ tags:
 ## What issue?
 The ycmd server SHUT DOWN (restart with ':YcmRestartServer'). Unexpected exit code -11.
 
-## Try fixed
+## Try fix
 
 ```shell
 ./install.py --clang-completer
@@ -23,9 +23,9 @@ python3 ./build.py
 
  Not working.
 
-So reading code, in build.py  find using sysconfig.
+When reading source code, i found out the build.py uses sysconfig
 
-I try add  pdb.set_trace() in function GetPossiblePythonLibraryDirectories first line. 
+I try to add pdb.set_trace() in the first line of function GetPossiblePythonLibraryDirectories.
 
 In pdb shell p sysconfig.get_config_var("LIBPL"), result show  path is fault, not  mine.
 
@@ -33,7 +33,7 @@ I try hard code absolute path in GetPossiblePythonLibraryDirectories, but no wor
 
 ## Fixed
 
-Anyway,  in ycm issues find miniconda3 will conflict.
+Anyway, in ycm issues i found out miniconda3 has conflict issue.
 
 so try:
 
@@ -42,7 +42,7 @@ rm -rf miniconda3
 python3 install.py
 ```
 
-well, it's working.
+Well, it's working.
 
 Environment implicit is evil,  explicit is better than implicit.
 
