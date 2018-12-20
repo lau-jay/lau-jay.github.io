@@ -153,10 +153,6 @@ class Application:
 
 服务器可以提供任何额外的域信息，这些信息属于该字典值中扩展的那部分，或者如果扩展只是表明服务器通过`send` 可调用函数接受附加事件，则它可能是一个空字典。
 
-As an example, imagine a HTTP protocol server wishes to provide an extension that allows a new event to be sent back to the server that tries to flush the network send buffer all the way through the OS level. It provides an empty entry in the extensions dict to signal that it can handle the event:
-
-例如，假設 HTTP 協議服務器希望提供一個擴展，允許將新事件發送回嘗試刷新網絡發送緩衝區的服務器， 直到整個操作系統級別。它在擴展詞典中提供一個空的條目來表明它可以處理該事件:
-
 一个例子是，假设HTTP协议服务器希望提供一个扩展，允许将新事件发送回尝试通过操作系统刷新网络发送缓存区的服务器。它在扩展字典中提供一个空的字段来表明它可以处理该事件:
 
 ```python
