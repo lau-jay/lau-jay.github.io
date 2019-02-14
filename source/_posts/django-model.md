@@ -14,7 +14,8 @@ Django的一个模型对应一个数据库表，模型的每个属性对应表�
    CharField(max_length=30) : varchar(30)
    ManyToManyField(Author) :  join table  Author
 
-Django在没有明确定义的时候会为每个模型定义一个自增量整数主键字段id
+Django在没有明确定义的时候会为每个模型定义一个自增量整数主键字段id //id = models.AutoField(primary_key=True)
+
 
 使用 Django 模型 API 创建的对象不会自动保 存，只能自己动手调用 save() 方法:
 
