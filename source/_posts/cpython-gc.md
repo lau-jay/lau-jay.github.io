@@ -10,7 +10,7 @@ Python的dict，tuple等内置数据结构的定义里包含里与GC有关的成
 
 研究所有内置的数据结构会发现所有的内置类型的结构体都在开头保留里PyObject结构体
 (CPython源码Include目录下的object结尾的头文件)
-```
+```c
 106 typedef struct _object {
 107   _PyObject_HEAD_EXTRA
 108   Py_ssize_t ob_refcnt;
