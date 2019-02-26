@@ -71,11 +71,22 @@ pagination_dir: page
 plugin:
 - hexo-generator-feed
 - hexo-prism_plugin
+- hexo-generator-search
 #feed:
 feed:
-type: atom
-path: atom.xml
-limit: 20
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+    content:
+    content_limit: 140
+    content_limit_delim: ' '
+    order_by: -date
+
+#search
+search:
+    path: search.xml
+    field: post
 ## Themes: https://hexo.io/themes/
 ## theme: next
 theme: hexo-theme-matery
