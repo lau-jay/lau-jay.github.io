@@ -16,6 +16,9 @@ menu:
   About:
     url: /about
     icon: fa-user-circle-o
+  Friends:
+    url: /friends
+    icon: fa-address-book
 
 # index page dream text,
 # 配置首页显示"梦想"的语句.
