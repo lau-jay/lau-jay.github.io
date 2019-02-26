@@ -38,10 +38,16 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace:
+
+prism_plugin:
+  mode: 'preprocess'
+  theme: 'tomorrow'
+  line_number: false
+  custom_css:
 
 # Category & Tag
 default_category: uncategorized
@@ -64,6 +70,7 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 plugin:
 - hexo-generator-feed
+- hexo-prism_plugin
 #feed:
 feed:
 type: atom
