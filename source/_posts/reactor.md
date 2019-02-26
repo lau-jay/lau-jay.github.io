@@ -78,5 +78,5 @@ epoll 的描述符事件有两种触发模式：LT（level trigger）和 ET（ed
 
 
 ### 参考
-* https://github.com/CyC2018/Interview-Notebook/blob/master/notes/Socket.md
+* https://github.com/CyC2018/CS-Notes/blob/master/docs/notes/Socket.md
 * http://www.cnblogs.com/dawen/archive/2011/05/18/2050358.html
