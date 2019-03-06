@@ -12,7 +12,7 @@ tags: git
 
 通过git提供的pre-commit的hook可以在commit的时候将代码格式化，规范检查，测试等执行完毕，而不需要工程师手动做相关的操作。流程类似这样的：
 
-![å¾](https://ljvmiranda921.github.io/assets/png/tuts/precommit_pipeline.png)
+![workflow](https://ljvmiranda921.github.io/assets/png/tuts/precommit_pipeline.png)
 
 通过采用*pre-commit* 这个Python编写的库只需要以下几步就可以完成上述任务。
 
@@ -20,7 +20,7 @@ tags: git
 * 编辑.pre-commit-config.yaml
 * 执行pre-commit install 以便在.git/目录中安装git hooks
 
-比如你想用flak8检查代码规范，那么从官方文档来的例子如下：
+比如你想用flak8检查代码规范，那么例子如下：
 
 ```yaml
 repos:
