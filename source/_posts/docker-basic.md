@@ -39,6 +39,15 @@ docker组的时候是没有问题的, 解析yaml的时候会补全的。
  其实原因很简单，docker link不可以`refer to localhost`。而很多框架default的数据库的URI是localhost。
  在配置中将localhost改为DB那个container的名字就好了。
 
+### 删除退出的容器
+
+`docker rm `docker ps -a |awk '{print $1}' | grep [0-9a-z]`
+
+### 删除none的镜像
+
+`docker rmi $(docker images -f 'dangling=true' -q)`
+
+
 
 
 
