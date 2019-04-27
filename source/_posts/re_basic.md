@@ -2,7 +2,7 @@
 title: re basic guide
 date: 2019-04-26 10:00:17
 categories: python
-tags: std
+tags: stdlib
 ---
 ## Python中的re
 ### 元字符总览
@@ -39,9 +39,9 @@ tags: std
 
 ### 应用匹配
 方法/属性 | 目的 |
----- | --- |
+---- | --- | --- 
 match()| 确定正则是否从字符串的开头匹配 |
-search() | |
-findall()|匹配任何空白字符；这等价于类 [ \t\n\r\f\v]|
-finditer() |匹配任何非空白字符；这相当于类 [^ \t\n\r\f\v]|
+search() | 扫描字符串，查找此正则匹配的任何位置。 |
+findall()|找到正则匹配的所有子字符串，并将它们作为列表返回。|
+finditer() |找到正则匹配的所有子字符串，并将它们返回为一个 [iterator](https://docs.python.org/zh-cn/3/glossary.html#term-iterator)|
 
