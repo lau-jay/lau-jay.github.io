@@ -20,17 +20,36 @@ tags: git
 * 编辑.pre-commit-config.yaml
 * 执行pre-commit install 以便在.git/目录中安装git hooks
 
-比如你想用flak8检查代码规范，那么例子如下：
+比如你想用black格式化代码，flak8检查代码规范，单元测试那么例子如下：
 
 ```yaml
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v1.2.3
+    repo: local
     hooks:
+    - id: black
+      name: black
+      language: system
+      entry: black
+      types: [python]
     - id: flake8
+      name: flake8
+      language: system
+      entry: flake8
+      types: [python]
+
+    - id: unitest
+      name: unitest
+      language: system
+      entry: ./test.sh
+      types: [python]
 ```
 
 repos是顶层的，每个hook都可以增加一个repo的section。
+repo存储库映射告诉pre-commit从哪里获取提现实现好的hook比如这里的flake8可以改为远程的https://github.com/pre-commit/pre-commit-hooks
+在上面这个例子中，由于我都在本地装了entry对应的文件，所以直接使用local
+entry 表示可执行的文件或者命令
+types 表示对哪些文件的更改起作用
+language 表示hook是哪些语言实现的，这里直接偷懒用系统,让他自己找
 
 有时候我们自己的标注和pep8的略有不同，那么可以在当前目录下增加 `.flake8` 来告诉flake8我们自己的客制化。
 
@@ -46,4 +65,4 @@ select = B,C,E,F,W,T4,B9
 
 * 本文章原文及本文的图片来自[这里](https://ljvmiranda921.github.io/notebook/2018/06/21/precommits-using-black-and-flake8/) 版权归原作者所有
 
-  
+
