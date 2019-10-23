@@ -1,0 +1,103 @@
+.post
+  position: relative
+  text-align: center
+  border-bottom: 1px dashed #ddd
+  margin: 0 0 4.5em
+  padding: 0 0 3em
+
+  &::after
+    content: ''
+    display: block
+    background: url('https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button.svg') no-repeat -46px top / 132px 35px
+    width: 88px
+    height: 35px
+    position: absolute
+    left: 50%
+    top: 100%
+    transform: translate(-50%, -18px)
+  
+  .post-cat
+    display: inline-block
+    margin: 0 0 5px
+    &:first-of-type::after
+      content: "\00B7"
+      margin: 0 .75em
+      color: #f78769
+    &:last-of-type::after 
+      content: ''
+    a
+      font: 700 13px Lato-Bold
+      color: #f78769
+      text-decoration: none
+      transition: .3s
+      text-transform: upperCase
+      letter-spacing: 1px
+      &:hover
+        color: #777
+
+  .post-title
+    margin: 0 0 .5em
+    font: 1.953em Lora 
+    color: #777
+    &::after
+      content: ""
+      display: block
+      margin: .5em auto
+      width: 20%
+      height: 2px
+      background-color: #f3f3f3  
+    a
+      color: #777
+      text-decoration: none    
+
+  .post-date
+    padding: 0
+    list-style: none
+    color: #bbb
+    font: 14px/1.6 Lato
+    li 
+      display: inline-block
+      &:first-child::after
+        content: "\00B7"
+        margin: 0 .75em
+  .post-cover
+    position: relative
+    user-select: none
+    &:after
+      position: absolute
+      content: ''
+      width: 82%
+      height: 100%
+      top: 0
+      left: 50%
+      transform: translateX(-50%)
+      box-shadow:0 0 40px 10px #ffffff inset
+    img
+      max-width: 80%
+      border-radius: 10px
+
+  .post-content
+    position: relative
+    color: #777
+    font-size: 1rem
+    line-height: 1.6
+    margin-bottom: 1.5em
+    text-align: left
+    a.more-link
+      box-shadow: inset 0 -80px 80px -5px rgba(255,255,255,.75)
+      color: #f78769
+      font-family: Lora-Bold
+      font-weight: 700
+      display: block
+      width: 100%
+      position: absolute
+      bottom: -32px
+      padding-top: 100px
+      text-align: center
+      text-decoration: none
+      transition: .5s
+      &:hover
+        box-shadow: none
+    img
+      max-width: 100%
+      border-radius: 4px

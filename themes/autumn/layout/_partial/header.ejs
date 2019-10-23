@@ -1,0 +1,33 @@
+<header class="header">
+    <nav class="mobile-menu" style="background: <%- theme.background %>">
+        <h3 class="invisibile">
+            <a href="<%- url_for() %>" class="logo">
+                <%= config.title %>
+            </a>
+        </h3>
+        <button class="menu">menu</button>
+    </nav>
+
+    <button class="ipad-menu menu">menu</button>
+
+    <h1 class="title" id="main-title">
+        <a href="<%- url_for() %>" class="logo">
+            <%= config.title %>
+        </a>
+    </h1>
+    <h2 class="desc">
+        <%= config.subtitle %>
+    </h2>
+
+    <div class="links">
+        <ul>
+            <% for (name in theme.social) { %>
+            <li>
+                <a href="<%- url_for(theme.social[name]) %>">
+                    <%- name %>
+                </a>
+            </li>
+            <% } %>
+        </ul>
+    </div>
+</header>

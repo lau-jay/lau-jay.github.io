@@ -89,7 +89,7 @@ search:
     field: post
 ## Themes: https://hexo.io/themes/
 ## theme: next
-theme: even
+theme: autumn
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
