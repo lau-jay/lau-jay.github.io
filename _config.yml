@@ -95,5 +95,5 @@ theme: autumn
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:lau-jay/pyclear.github.io.git
+  repo: git@github.com:lau-jay/lau-jay.github.io.git
   branch: master
