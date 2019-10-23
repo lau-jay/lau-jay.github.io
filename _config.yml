@@ -6,7 +6,7 @@
 title: 世界的过客
 subtitle: 每个人获得的东西都恰好是他值得获得的东西
 description: Pythonista
-author: Pyclearl
+author: laujay
 language: zh-CN
 timezone:
 
@@ -89,11 +89,11 @@ search:
     field: post
 ## Themes: https://hexo.io/themes/
 ## theme: next
-theme: hexo-theme-matery
+theme: even
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:pyclear/pyclear.github.io.git
+  repo: git@github.com:lau-jay/pyclear.github.io.git
   branch: master
