@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/pyclear/pyclear.github.io.svg?branch=dev)](https://travis-ci.org/pyclear/pyclear.github.io)
 
-个人博客 pyclear.me
+个人博客 laujay.com
 
 版权声明：
 
