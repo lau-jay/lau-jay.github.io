@@ -10,7 +10,7 @@ before_install:
 - npm install -g hexo
 - chmod 600 ~/.ssh/travis_key
 - eval $(ssh-agent -s)
-- ssh-add ~/.ssh/id_rsa
+- ssh-add ~/.ssh/travis_key
 - cp .travis/ssh_config  ~/.ssh/config
 - ssh-agent -k
 - git config --global user.name "pyclear"
