@@ -6,7 +6,7 @@ social:
 background: 'url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3'
 
 # Favicon
-favicon: https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/favicon.ico
+favicon: '/img/favicon.ico'
 
 # SEO
 keywords: 'hexo, autumn'
