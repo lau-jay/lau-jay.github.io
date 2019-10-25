@@ -55,7 +55,7 @@ a[start:stop:step]
 a[slice(start, stop, step)]
 ```
 Slice对象根据不同的参数会有不同的行为,跟range非常类似，比如 `slice(stop)` 和
- `slice(start, stop, step)` (note: 原文有误，修改了下)。如果要跳过给定的参数，可以使用
+ `slice(start, stop[, step])`。如果要跳过给定的参数，可以使用
   `None`, 例如 `a[start:]` 等价于 `a[slice(start, None)]` 或者 `a[::1]` 等价于
   `a[slice(None, None, -1)]`
 
