@@ -20,6 +20,7 @@ tags: git
 * 编辑.pre-commit-config.yaml
 * 执行pre-commit install 以便在.git/目录中安装git hooks
 
+<!-- more -->
 比如你想用black格式化代码，flak8检查代码规范，单元测试那么例子如下：
 
 ```yaml

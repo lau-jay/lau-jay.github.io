@@ -23,6 +23,7 @@ tags:
 `git commit --amend`命令需要的是提交的文件快照和之前一样，
 
 所以上面的添加文件要在`git commit`之前。
+<!-- more -->
 
 ## 总有些文件会一不小心add进暂存区内，取消暂存区的文件?
 在git status状态会有相应的信息提示，是git reset HEAD <file>
