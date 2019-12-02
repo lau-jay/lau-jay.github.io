@@ -49,3 +49,25 @@ tags:
 ```
 
 
+## static local variable
+
+整个程序运行期间不释放，具有区块作用域对其他函数隐藏，允许同名函数再使用。
+简单的代码验证这点。
+```c
+#include <stdio.h>
+
+void f(int n)
+{
+    static int i=0;
+    printf("n:%d, i:%d\n", n, i);
+    i = n;
+}
+
+int main(void)
+{
+    f(1);
+    f(2);
+    return 0;
+}
+```
+
