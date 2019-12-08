@@ -75,3 +75,20 @@ int main(void)
 之前看编程范式相关看过类型系统是描述内存布局的概念
 在C里面非常直观的体现了这个概念
 
+## const int *p 与 int * cont p
+前者表示p指向的对象不可以更改：
+```C
+int a = 10;
+*p = 10; // wrong
+p = &a;  // legal
+```
+
+后者表示p本身不可以更改
+```C
+int a = 10;
+*p = 0; //  legal
+p = &a; // wrong
+```
+
+
+
