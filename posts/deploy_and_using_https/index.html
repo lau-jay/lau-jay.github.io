@@ -1,0 +1,75 @@
+<!doctype html><html lang=zh-CN><head><title>CentOS升级HTTPS - 世界的过客</title>
+<meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="The HTML5 Herald"><meta name=author content="Jay Lau"><meta property="og:title" content="CentOS升级HTTPS"><meta property="og:description" content="升级https 最近需要将域名升级为https, 以满足安全性和一些第三方接口的要求。 目前的技术栈为前端VUE, 后端为Tornado。Tornado负责接口的实现。"><meta property="og:type" content="article"><meta property="og:url" content="https://laujay.com/posts/deploy_and_using_https/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2017-12-28T21:38:29+08:00"><meta property="article:modified_time" content="2017-12-28T21:38:29+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="CentOS升级HTTPS"><meta name=twitter:description content="升级https 最近需要将域名升级为https, 以满足安全性和一些第三方接口的要求。 目前的技术栈为前端VUE, 后端为Tornado。Tornado负责接口的实现。"><meta name=generator content="Hugo 0.121.1"><link rel="shortcut icon" href=https://laujay.com/img/favicon.ico><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin=anonymous><link rel=stylesheet href=https://laujay.com/fontawesome/css/all.min.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda"><link rel=stylesheet type=text/css href=https://laujay.com/css/styles.css></head><body><div id=container><header><h1><a href=https://laujay.com/>世界的过客</a></h1><ul id=social-media><li><a href=https://github.com/lau-jay title=GitHub><i class="fab fa-github fa-lg"></i></a></li></ul><p><em>每个人获得的东西都恰好是他值得获得的东西</em></p></header><nav><ul><li><a href=https://laujay.com/about><i class="fa-li fa fa-lg"></i><span>About</span></a></li><li><a href=https://laujay.com/categories><i class="fa-li fa fa-lg"></i><span>Categories</span></a></li><li><a href=https://laujay.com/tags><i class="fa-li fa fa-lg"></i><span>Tags</span></a></li></ul></nav><main><article><h1>CentOS升级HTTPS</h1><aside><ul><li><time class=post-date datetime=2017-12-28T21:38:29+08:00>Dec 28, 2017</time></li><li>Categories:
+<em><a href=https://laujay.com/categories/tool>tool</a></em></li><li><em><a href=https://laujay.com/tags/nginx>#nginx</a>
+,
+<a href=https://laujay.com/tags/https>#https</a></em></li><li>2 minute read</li></ul></aside><div class=featured_image><a href=https://laujay.com/posts/deploy_and_using_https/ title=CentOS升级HTTPS><img src></a></div><h2 id=升级https>升级https</h2><p>最近需要将域名升级为https, 以满足安全性和一些第三方接口的要求。
+目前的技术栈为前端VUE, 后端为Tornado。Tornado负责接口的实现。</p><h2 id=具体步骤>具体步骤</h2><p><code>curl https://get.acme.sh | sh</code> 安装acme.sh</p><p><code>source ~/.bashrc </code><code>acme.sh --issue -d www.your-app.com -w /home/work/www/your-app/current/public</code> 这里的public需要通过域名外网可访问</p><pre tabindex=0><code>acme.sh --installcert -d www.your-app.com \
+            --keypath       /home/work/www/ssl/www.your-app.com.key  \
+            --fullchainpath /home/work/www/ssl/www.your-app.com.key.pem \
+            --reloadcmd     &#34;sudo service nginx force-reload&#34;
+</code></pre><p>这里是ubuntu上的用法,而我用的服务器是CentOS系统的,所以最后一句需要改为</p><pre tabindex=0><code>--reloadcmd &#34;sudo systemctl reload nginx&#34;
+</code></pre><p>最后一句为了免密执行需要再设置下:
+<code>sudo visudo</code>
+<code>work ALL=(ALL) NOPASSWD: /bin/systemctl reload nginx</code> # work 是工作目录
+生成 dhparam.pem 文件:
+<code>openssl dhparam -out /home/work/www/ssl/dhparam.pem 2048</code></p><h2 id=遇到的问题>遇到的问题</h2><p>首先需要解决的是证书, 关于这点acme.sh解决了这个问题, 详细内容可以看参考。
+当生成证书, 写好nginx配置的时候, 测试配置的时候直接报错<code>unknown directive "ssl"</code>。
+很明显ssl不支持, 查看配置确实是最初编译的时候没加入http_ssl_module,
+随后重新编译加上<code>--with-http_ssl_module</code>, 于是就解决了这个问题。</p><h2 id=配置nginx>配置Nginx</h2><pre tabindex=0><code>server {
+    listen       443 ssl;
+    server_name  subdomain.dommain.com;
+
+    ssl_certificate      /home/work/path/subdomain.domain.com.key.pem;
+    ssl_certificate_key  /home/work/path/subdomain.domain.com.key;
+    ssl_dhparam /home/work/path/dhparam.pem;
+
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers  on;
+    ...
+
+}
+</code></pre><h2 id=http-强制跳转https>http 强制跳转https</h2><pre tabindex=0><code>server {
+    listen       80;
+	server_name  subdomain.domain.com;
+    rewrite /(.*) https://$http_host/$1 redirect;
+}
+</code></pre><h2 id=最后检查并重启nginx>最后检查并重启nginx</h2><p>这个具体的命令依据不同版本的系统而不同, 更多内容看参考文章。</p><h2 id=使用-acmesh-给-nginx-安装-let-s-encrypt-提供的免费-ssl-证书httpsruby-chinaorgtopics31983><a href=https://ruby-china.org/topics/31983>使用 acme.sh 给 Nginx 安装 Let’ s Encrypt 提供的免费 SSL 证书</a></h2><h2 id=--web>title: CentOS升级HTTPS
+date: 2017-12-28 21:38:29
+categories: Nginx
+tags:
+- https
+- nginx
+- web</h2><h2 id=升级https-1>升级https</h2><p>最近需要将域名升级为https, 以满足安全性和一些第三方接口的要求。
+目前的技术栈为前端VUE, 后端为Tornado。Tornado负责接口的实现。</p><h2 id=具体步骤-1>具体步骤</h2><p><code>curl https://get.acme.sh | sh</code> 安装acme.sh</p><p><code>source ~/.bashrc </code><code>acme.sh --issue -d www.your-app.com -w /home/work/www/your-app/current/public</code> 这里的public需要通过域名外网可访问</p><pre tabindex=0><code>acme.sh --installcert -d www.your-app.com \
+            --keypath       /home/work/www/ssl/www.your-app.com.key  \
+            --fullchainpath /home/work/www/ssl/www.your-app.com.key.pem \
+            --reloadcmd     &#34;sudo service nginx force-reload&#34;
+</code></pre><p>这里是ubuntu上的用法,而我用的服务器是CentOS系统的,所以最后一句需要改为</p><pre tabindex=0><code>--reloadcmd &#34;sudo systemctl reload nginx&#34;
+</code></pre><p>最后一句为了免密执行需要再设置下:
+<code>sudo visudo</code>
+<code>work ALL=(ALL) NOPASSWD: /bin/systemctl reload nginx</code> # work 是工作目录
+生成 dhparam.pem 文件:
+<code>openssl dhparam -out /home/work/www/ssl/dhparam.pem 2048</code></p><h2 id=遇到的问题-1>遇到的问题</h2><p>首先需要解决的是证书, 关于这点acme.sh解决了这个问题, 详细内容可以看参考。
+当生成证书, 写好nginx配置的时候, 测试配置的时候直接报错<code>unknown directive "ssl"</code>。
+很明显ssl不支持, 查看配置确实是最初编译的时候没加入http_ssl_module,
+随后重新编译加上<code>--with-http_ssl_module</code>, 于是就解决了这个问题。</p><h2 id=配置nginx-1>配置Nginx</h2><pre tabindex=0><code>server {
+    listen       443 ssl;
+    server_name  subdomain.dommain.com;
+
+    ssl_certificate      /home/work/path/subdomain.domain.com.key.pem;
+    ssl_certificate_key  /home/work/path/subdomain.domain.com.key;
+    ssl_dhparam /home/work/path/dhparam.pem;
+
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers  on;
+    ...
+
+}
+</code></pre><h2 id=http-强制跳转https-1>http 强制跳转https</h2><pre tabindex=0><code>server {
+    listen       80;
+	server_name  subdomain.domain.com;
+    rewrite /(.*) https://$http_host/$1 redirect;
+}
+</code></pre><h2 id=最后检查并重启nginx-1>最后检查并重启nginx</h2><p>这个具体的命令依据不同版本的系统而不同, 更多内容看参考文章。</p><p><a href=https://ruby-china.org/topics/31983>使用 acme.sh 给 Nginx 安装 Let’ s Encrypt 提供的免费 SSL 证书</a></p></article><section class=post-nav><ul><li><a href=https://laujay.com/posts/pickle-error/><i class="fa fa-chevron-circle-left"></i> Pickle Error</a></li><li><a href=https://laujay.com/posts/tornado-run-blocking-function/>Tornado执行阻塞函数 <i class="fa fa-chevron-circle-right"></i></a></li></ul></section><section class=comments-block><button id=show-comments style=display:none><i class="fa fa-comments"></i> Add/View Comments</button></section><section id=disqus_thread></section><script>(function(){if(window.location.hostname=="localhost")return;var t,n=!1,o="lau-jay",s=document.getElementById("show-comments"),i=!0,a=null;if(a)return;s.style.display="",i?e():s.addEventListener("click",e,!1);function e(){if(!n){n=!0;var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//"+o+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e),document.getElementById("show-comments").style.display="none"}}t=window.location.hash.substr(1),t.length>8&&t.substring(0,8)=="comment-"&&e(),/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)&&e()})()</script></main><footer><h6>Copyright © 2016 ~ 2023 - Jay Lau|Theme by <a href=https://github.com/funkydan2/hugo-kiera>kiera</a> |
+Rendered by <a href=https://gohugo.io title=Hugo>Hugo</a> |
+<a href=https://laujay.com/index.xml>Subscribe</a></h6></footer></div><script src=https://laujay.com/js/scripts.js></script><script>var doNotTrack=!1;doNotTrack||(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,i=t.createElement(n),a=t.getElementsByTagName(n)[0],i.async=1,i.src=s,a.parentNode.insertBefore(i,a)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-91611718-2","auto"),ga("send","pageview"))</script></body></html>

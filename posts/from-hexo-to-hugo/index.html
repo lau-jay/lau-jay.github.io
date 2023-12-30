@@ -1,0 +1,79 @@
+<!doctype html><html lang=zh-CN><head><title>From Hexo to Hugo - 世界的过客</title>
+<meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="The HTML5 Herald"><meta name=author content="Jay Lau"><meta property="og:title" content="From Hexo to Hugo"><meta property="og:description" content="我之前使用hexo静态博客生成器，并使用Travis CI(Continuous Integration)来自动 生成并部署静态页面到GitHub Pages。"><meta property="og:type" content="article"><meta property="og:url" content="https://laujay.com/posts/from-hexo-to-hugo/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2020-02-22T12:49:17+08:00"><meta property="article:modified_time" content="2020-02-22T12:49:17+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="From Hexo to Hugo"><meta name=twitter:description content="我之前使用hexo静态博客生成器，并使用Travis CI(Continuous Integration)来自动 生成并部署静态页面到GitHub Pages。"><meta name=generator content="Hugo 0.121.1"><link rel="shortcut icon" href=https://laujay.com/img/favicon.ico><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin=anonymous><link rel=stylesheet href=https://laujay.com/fontawesome/css/all.min.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda"><link rel=stylesheet type=text/css href=https://laujay.com/css/styles.css></head><body><div id=container><header><h1><a href=https://laujay.com/>世界的过客</a></h1><ul id=social-media><li><a href=https://github.com/lau-jay title=GitHub><i class="fab fa-github fa-lg"></i></a></li></ul><p><em>每个人获得的东西都恰好是他值得获得的东西</em></p></header><nav><ul><li><a href=https://laujay.com/about><i class="fa-li fa fa-lg"></i><span>About</span></a></li><li><a href=https://laujay.com/categories><i class="fa-li fa fa-lg"></i><span>Categories</span></a></li><li><a href=https://laujay.com/tags><i class="fa-li fa fa-lg"></i><span>Tags</span></a></li></ul></nav><main><article><h1>From Hexo to Hugo</h1><aside><ul><li><time class=post-date datetime=2020-02-22T12:49:17+08:00>Feb 22, 2020</time></li><li>Categories:
+<em><a href=https://laujay.com/categories/tool>tool</a></em></li><li><em><a href=https://laujay.com/tags/note>#note</a></em></li><li>2 minute read</li></ul></aside><div class=featured_image><a href=https://laujay.com/posts/from-hexo-to-hugo/ title="From Hexo to Hugo"><img src></a></div><p>我之前使用hexo静态博客生成器，并使用Travis CI(Continuous Integration)来自动
+生成并部署静态页面到GitHub Pages。</p><p>但是这有两个个问题:</p><pre><code>1. Node很麻烦，我经常装都会遇到问题。
+2. 不快
+</code></pre><p>正好有时间，我决定尝试更换为<a href=https://gohugo.io/>hugo</a>, 搜索资料后开始行动。</p><blockquote><p>这篇文章基于Claudio Jolowicz的文章<a href=https://cjolowicz.github.io/posts/hosting-a-hugo-blog-on-github-pages-with-travis-ci/>Hosting a Hugo blog on GitHub Pages with Travis CI</a></p></blockquote><h2 id=总览>总览</h2><p>总的来说你需要做以下几件事:</p><pre><code>1.  两个github库一个叫&lt;username&gt;.github.io, 一个叫啥都行推荐是blog
+2.  创建个新的github账号，建议叫&lt;username&gt;-blog-bot
+3.  并把&lt;username&gt;-blog-bot设置为&lt;username&gt;.github.io这个库的协作者
+4.  设置Trvais CI，以便blog库有变更会自动生成静态页面并部署
+</code></pre><h2 id=先将两个github仓库创建好>先将两个github仓库创建好</h2><p>略</p><h2 id=接着创建好新的github账号>接着创建好新的GitHub账号</h2><p>这里要说下，由于GitHub帐户必须具有唯一的电子邮件地址，
+因此你需要为机器人帐户使用单独的电子邮件地址。
+在这种情况下，一种有用的技术是子地址寻址（也称为plus addressing）：</p><pre><code>附加+blog-bot到电子邮件地址的@标志前的部分，那么发送到该地址的邮件将传递到+号前的收件箱中。
+</code></pre><p>设置好了后到username.github.io的setting里加为协作者</p><h2 id=安装hugo>安装hugo</h2><p>mac OSX <code>brew install hugo</code>
+其他参见<a href=https://gohugo.io/getting-started/installing/>安装Hugo</a></p><h2 id=设置博客库>设置博客库</h2><p>在你的电脑上 <code>hugo new site blog</code></p><pre><code>cd blog
+
+git init
+git add .
+git commit -m &quot;Initial commit&quot;
+</code></pre><p>然后 <code>git remote add https://github.com/username/blog.git</code>
+接着</p><pre><code>git submodule add \
+    https://github.com/budparr/gohugo-theme-ananke.git \
+    themes/ananke
+git add .
+git commit -m &quot;Add submodule themes/ananke&quot;
+</code></pre><p>这里我简单选择hugo入门里推荐的这个主题, 你可以自己换个。
+最后 <code>git psuh -u origin master</code></p><p>将them变成你的子模块后，就可以跟踪最新的了。</p><h2 id=配置站点>配置站点</h2><p>配置在config.toml文件，
+主要的几个配置是</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=display:flex><span>    <span style=color:#a6e22e>baseURL</span> = <span style=color:#e6db74>&#34;https://username.github.io/&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>languageCode</span> = <span style=color:#e6db74>&#34;zh-CN&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>title</span> = <span style=color:#e6db74>&#34;我的博客&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>theme</span> = <span style=color:#e6db74>&#34;ananke&#34;</span>
+</span></span></code></pre></div><p>改完记得提交</p><h2 id=链接部署库>链接部署库</h2><p>还是blog目录下:</p><pre><code>git submodule add \
+    https://github.com/username/username.github.io.git \
+    public
+git commit -am &quot;Add submodule public&quot;
+</code></pre><p>public 是最后生成的静态文件所在目录，把它跟要放的存储库关联，那么之后生成好了。
+只要进这个目录<code>git push origin master</code>就会把网站部署好了</p><h2 id=ci>CI</h2><p>利用CI的持续部署解放自己，我们只要</p><ul><li>hugo new posts/postname.md</li><li>git add content/posts</li><li>git commit -m &ldquo;add post&rdquo;</li><li>git push</li></ul><p>这四个步骤就完成了一个博客文章从写到网站的所有过程</p><p>将更改（例如新文章）部署到博客实际需要几个步骤：</p><ol><li>将新文章更改推送到blog存储库。也就是上面这段</li><li>hugo被触发重建网站内容。</li><li>内容被推送到username.github.io存储库。</li><li>该存储库已部署到GitHub Pages。</li></ol><p>好，接下来设置CI解决2，3两个步骤</p><p>在Travis CI(网址是travis-ci.org)上，用GitHub主账号登陆，找到blog这个存储库。
+找到设置有个叫<code>environments</code>的地方,
+添加一个名为的<code>GITHUB_AUTH_SECRET</code>环境变量。
+使用新创建的GitHub帐户的用户名和密码将值设置为https://user:password@github.com</p><p>在本地blog库的目录下添加文件名为<code>.travis.yml</code> 的配置文件来配置Travis CI 。</p><p>blog存储库的持续集成需要执行三个任务：</p><ol><li>将Hugo安装到CI环境中。</li><li>调用Hugo命令行工具来重建站点。</li><li>将新内容部署到username.github.io。</li></ol><p>第三步委托给Shell脚本，这是下一部分的主题。</p><p>创建.travis.yml具有以下内容的文件：</p><pre><code>---
+install:
+  - curl -LO https://github.com/gohugoio/hugo/releases/download/v0.64.1/hugo_0.64.1_Linux-64bit.deb
+  - sudo dpkg -i hugo_0.64.1_Linux-64bit.deb
+
+script:
+  - hugo
+
+deploy:
+  - provider: script
+    script: bash deploy.sh
+    skip_cleanup: true
+    on:
+      branch: master
+</code></pre><h2 id=添加部署脚本>添加部署脚本</h2><p>在blog存储库中创建脚本，记得把下面的username替换为你的GitHub用户名：</p><pre><code>#!/bin/bash
+
+echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;
+
+cd public
+
+if [ -n &quot;$GITHUB_AUTH_SECRET&quot; ]
+then
+    touch ~/.git-credentials
+    chmod 0600 ~/.git-credentials
+    echo $GITHUB_AUTH_SECRET &gt; ~/.git-credentials
+
+    git config credential.helper store
+    git config user.email &quot;username-blog-bot@users.noreply.github.com&quot;
+    git config user.name &quot;username-blog-bot&quot;
+fi
+
+git add .
+git commit -m &quot;Rebuild site&quot;
+git push --force origin HEAD:master
+</code></pre><h2 id=最后>最后</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>    git add .travis.yml deploy.sh
+</span></span><span style=display:flex><span>    git commit -am <span style=color:#e6db74>&#34;CI: Build and push to username.github.io&#34;</span>
+</span></span><span style=display:flex><span>    git push
+</span></span></code></pre></div><p>这样你访问https://username.github.io
+就能看到你的博客了</p><p>嗯，至于怎么加文章，自己去看hugo入门吧</p></article><section class=post-nav><ul><li><a href=https://laujay.com/posts/slice/><i class="fa fa-chevron-circle-left"></i> 理解Python的切片表示</a></li><li><a href=https://laujay.com/posts/tcp-ip/>TCP/IP网络编程 <i class="fa fa-chevron-circle-right"></i></a></li></ul></section><section class=comments-block><button id=show-comments style=display:none><i class="fa fa-comments"></i> Add/View Comments</button></section><section id=disqus_thread></section><script>(function(){if(window.location.hostname=="localhost")return;var t,n=!1,o="lau-jay",s=document.getElementById("show-comments"),i=!0,a=null;if(a)return;s.style.display="",i?e():s.addEventListener("click",e,!1);function e(){if(!n){n=!0;var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//"+o+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e),document.getElementById("show-comments").style.display="none"}}t=window.location.hash.substr(1),t.length>8&&t.substring(0,8)=="comment-"&&e(),/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)&&e()})()</script></main><footer><h6>Copyright © 2016 ~ 2023 - Jay Lau|Theme by <a href=https://github.com/funkydan2/hugo-kiera>kiera</a> |
+Rendered by <a href=https://gohugo.io title=Hugo>Hugo</a> |
+<a href=https://laujay.com/index.xml>Subscribe</a></h6></footer></div><script src=https://laujay.com/js/scripts.js></script><script>var doNotTrack=!1;doNotTrack||(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,i=t.createElement(n),a=t.getElementsByTagName(n)[0],i.async=1,i.src=s,a.parentNode.insertBefore(i,a)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-91611718-2","auto"),ga("send","pageview"))</script></body></html>
